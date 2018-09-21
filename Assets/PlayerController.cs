@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
 	public float movementSpeed;
 	public float jumpHeight;
 	private Rigidbody rb;
-
+    private bool paused = false;
 
 	/*** State management ***/
 	public enum PlayerState {
@@ -41,10 +41,12 @@ public class PlayerController : MonoBehaviour
 	
 	// Update is called once per frame
 	void Update () {
-		var hori = Input.GetAxis("Horizontal");
-		var vert = Input.GetAxis("Vertical");
-	
-		HandleMovement(hori, vert);
+        //if (paused = false) { Add unpause bedore you readd this
+            var hori = Input.GetAxis("Horizontal");
+            var vert = Input.GetAxis("Vertical");
+
+            HandleMovement(hori, vert);
+        //}
 	}
 
 	void HandleMovement(float hori, float vert)
@@ -117,4 +119,12 @@ public class PlayerController : MonoBehaviour
 	{
 		playerSpriteRenderer.sprite = sprite;
 	}
+
+    void Pause() {
+        paused = true;
+    }
+
+    void UnPause() {
+        paused = false;
+    }
 }
