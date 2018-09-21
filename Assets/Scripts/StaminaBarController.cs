@@ -3,15 +3,15 @@ using UnityEngine.UI;
 
 public class StaminaBarController : MonoBehaviour
 {
-    private Image _staminaBarImage;
+    private Image staminaBarImage;
 
     void Start()
     {
-        _staminaBarImage = GetComponent<Image>();
+        staminaBarImage = GetComponent<Image>();
     }
 
-    public void OnStaminaChanged(float currentStamina)
+    public void ChangeStamina(float currentStamina)
     {
-        _staminaBarImage.fillAmount = currentStamina;
+        staminaBarImage.fillAmount = currentStamina;
     }
 }

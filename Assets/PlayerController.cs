@@ -18,6 +18,16 @@ public class PlayerController : MonoBehaviour
 	public float jumpHeight;
 	private Rigidbody rb;
 
+    public StaminaBarController StaminaBar;
+    private int health = 3;
+    private bool isJumping;
+    private float maxStamina = 100;
+    [SerializeField]
+    private float staminaDecreaseValue = 20;
+    [SerializeField]
+    private float staminaIncreaseValue = 25;
+    private float currentStamina;
+
 
 	/*** State management ***/
 	public enum PlayerState {
@@ -37,7 +47,9 @@ public class PlayerController : MonoBehaviour
 		rb = GetComponent<Rigidbody>();
 		// Default to idle spriterenderer
 		ChangeState(PlayerState.Idle);
-	}
+
+	    currentStamina = maxStamina;
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -52,15 +64,17 @@ public class PlayerController : MonoBehaviour
 		Vector2 movementVector = Vector2.zero;
 		
 		// If we're jumping
-		if(vert > 0)
+		if(vert > 0 && currentStamina >= staminaDecreaseValue)
 		{
 			movementVector = new Vector2(hori * movementSpeed, vert * jumpHeight);
 			ChangeState(PlayerState.Jumping);
+		    isJumping = true;
 		}
 
 		// Of we're crouching
 		else if(vert < 0)
 		{
+		    isJumping = false;
 			ChangeState(PlayerState.Crouch);
 		}
 
@@ -81,9 +95,12 @@ public class PlayerController : MonoBehaviour
 			else {
 				ChangeState(PlayerState.Idle);
 			}
+
+		    isJumping = false;
 		}
 		rb.AddForce(movementVector);
-	}
+	    UpdateStamina(isJumping);
+    }
 
 	public void ChangeState(PlayerState newState)
 	{
@@ -116,4 +133,23 @@ public class PlayerController : MonoBehaviour
 	{
 		
 	}
+
+    private void UpdateHealth()
+    {
+        //todo
+    }
+
+    /// <summary>
+    /// Updates the stamina
+    /// </summary>
+    private void UpdateStamina(bool jumping)
+    {
+        if (jumping)
+            currentStamina -= staminaDecreaseValue;
+        else
+            currentStamina += staminaIncreaseValue;
+
+        float percentage = currentStamina / maxStamina;
+        StaminaBar.ChangeStamina(percentage);
+    }
 }
