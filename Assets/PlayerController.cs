@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerController : MonoBehaviour 
 {
@@ -17,7 +15,23 @@ public class PlayerController : MonoBehaviour
 	public float movementSpeed;
 	public float jumpHeight;
 	private Rigidbody rb;
+<<<<<<< HEAD
     private bool paused = false;
+=======
+
+    public HealthController HealthController;
+    public StaminaBarController StaminaBarController;
+    private int maxHearts = 3;
+    private int currentHearts;
+    private bool isJumping;
+    private float maxStamina = 100;
+    [SerializeField]
+    private float staminaDecreaseValue = 1.0f;
+    [SerializeField]
+    private float staminaIncreaseValue = 1.5f;
+    private float currentStamina;
+
+>>>>>>> bba3237d00d3ea4c52e71ca026d5d69f38e11a6e
 
 	/*** State management ***/
 	public enum PlayerState {
@@ -37,7 +51,11 @@ public class PlayerController : MonoBehaviour
 		rb = GetComponent<Rigidbody>();
 		// Default to idle spriterenderer
 		ChangeState(PlayerState.Idle);
-	}
+
+	    currentHearts = maxHearts;
+        HealthController.DrawHearts(currentHearts);
+	    currentStamina = maxStamina;
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -54,17 +72,19 @@ public class PlayerController : MonoBehaviour
 		Vector2 movementVector = Vector2.zero;
 		
 		// If we're jumping
-		if(vert > 0)
+		if(vert > 0 && currentStamina >= staminaDecreaseValue)
 		{
 			movementVector = new Vector2(hori * movementSpeed, vert * jumpHeight);
 			ChangeState(PlayerState.Jumping);
+		    isJumping = true;
 		}
 
 		// Of we're crouching
 		else if(vert < 0)
 		{
 			ChangeState(PlayerState.Crouch);
-		}
+		    isJumping = false;
+        }
 
 		// We're not jumping or crouching
 		else {
@@ -83,9 +103,12 @@ public class PlayerController : MonoBehaviour
 			else {
 				ChangeState(PlayerState.Idle);
 			}
+
+		    isJumping = false;
 		}
 		rb.AddForce(movementVector);
-	}
+	    UpdateStamina(isJumping);
+    }
 
 	public void ChangeState(PlayerState newState)
 	{
@@ -114,17 +137,67 @@ public class PlayerController : MonoBehaviour
 
 	}
 
-
 	void SetSprite(Sprite sprite)
 	{
 		playerSpriteRenderer.sprite = sprite;
 	}
 
+<<<<<<< HEAD
     void Pause() {
         paused = true;
     }
 
     void UnPause() {
         paused = false;
+=======
+    /// <summary>
+    /// If the player gets hit by an enemy, update the health.
+    /// </summary>
+    /// <param name="col"></param>
+    void OnColliderEnter(Collider col)
+    {
+        if (col.tag == "Enemy")
+            DecreaseHealth();
+    }
+
+    /// <summary>
+    /// Decreases the health and check if the player is game over.
+    /// </summary>
+    private void DecreaseHealth()
+    {
+        currentHearts--;
+
+        HealthController.UpdateHearts(currentHearts);
+
+        if (currentHearts <= 0)
+            GameOver();
+    }
+
+    /// <summary>
+    /// Updates the stamina.
+    /// </summary>
+    private void UpdateStamina(bool jumping)
+    {
+        if (jumping)
+            currentStamina -= staminaDecreaseValue;
+        else if (currentStamina < maxStamina)
+            currentStamina += staminaIncreaseValue;
+
+        float percentage = currentStamina / maxStamina;
+        StaminaBarController.ChangeStamina(percentage);
+    }
+
+    /// <summary>
+    /// When the player is game over, he spawns at the checkpoint.
+    /// </summary>
+    void GameOver()
+    {
+        // todo spawn at checkpoint
+        currentHearts = maxHearts;
+        currentStamina = maxStamina;
+
+        HealthController.RestartHearts();
+        StaminaBarController.ChangeStamina(currentStamina);
+>>>>>>> bba3237d00d3ea4c52e71ca026d5d69f38e11a6e
     }
 }
