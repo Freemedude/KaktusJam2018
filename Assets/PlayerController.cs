@@ -94,26 +94,27 @@ public class PlayerController : MonoBehaviour
 		switch(newState)
 		{
 			case PlayerState.Idle:
-				playerSpriteRenderer.sprite = playerSpriteIdle;
+				SetSprite(playerSpriteIdle);
 				break;	
 			case PlayerState.MovingLeft:
-				playerSpriteRenderer.sprite = playerSpriteLeft;
+				SetSprite(playerSpriteLeft);
 				break;	
 			case PlayerState.MovingRight:
-				playerSpriteRenderer.sprite = playerSpriteRight;
+				SetSprite(playerSpriteRight);
 				break;	
 			case PlayerState.Jumping:
-				playerSpriteRenderer.sprite = playerSpriteJump;
+				SetSprite(playerSpriteJump);
 				break;	
 			case PlayerState.Crouch:
-				playerSpriteRenderer.sprite = playerSpriteCrouch;
+				SetSprite(playerSpriteCrouch);
 				break;	
 		}
 
 	}
 
-	private void SetSprite(Sprite sprite)
+
+	void SetSprite(Sprite sprite)
 	{
-		
+		playerSpriteRenderer.sprite = sprite;
 	}
 }
