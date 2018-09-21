@@ -123,6 +123,7 @@ GameObject:
   - component: {fileID: 331225562}
   - component: {fileID: 331225564}
   - component: {fileID: 331225563}
+  - component: {fileID: 331225565}
   m_Layer: 5
   m_Name: DialogueBox
   m_TagString: Untagged
@@ -148,8 +149,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000012398, y: -162}
-  m_SizeDelta: {x: 753.9, y: 137.1}
+  m_AnchoredPosition: {x: -0.000015259, y: -115}
+  m_SizeDelta: {x: 430.6, y: 124.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &331225563
 MonoBehaviour:
@@ -185,6 +186,24 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 331225561}
   m_CullTransparentMesh: 0
+--- !u!95 &331225565
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 331225561}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 84c0a33ef0c1c44fda24b3c5475d196d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &390543314
 GameObject:
   m_ObjectHideFlags: 0
@@ -292,8 +311,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0000061095, y: 0}
-  m_SizeDelta: {x: 710.7, y: 77.1}
+  m_AnchoredPosition: {x: -0.000012398, y: -8}
+  m_SizeDelta: {x: 392.9, y: 77.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &928972939
 MonoBehaviour:
@@ -505,6 +524,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameText: {fileID: 1798766469}
   dialogueText: {fileID: 928972939}
+  animator: {fileID: 331225565}
 --- !u!4 &1328031436
 Transform:
   m_ObjectHideFlags: 0
@@ -691,7 +711,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 296.95, y: -53.550003}
+  m_AnchoredPosition: {x: 135.29999, y: -47.3}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1546256799
@@ -1013,8 +1033,8 @@ MonoBehaviour:
   dialogue:
     name: Bubber
     sentences:
-    - "First \t"
-    - Second
+    - 'First First First First  First First '
+    - 'second second second second second second second second '
 --- !u!1 &1798766467
 GameObject:
   m_ObjectHideFlags: 0
@@ -1047,7 +1067,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -275.7, y: 44}
+  m_AnchoredPosition: {x: -116.45002, y: 35}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1798766469
