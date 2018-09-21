@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerController : MonoBehaviour 
 {
@@ -18,14 +16,16 @@ public class PlayerController : MonoBehaviour
 	public float jumpHeight;
 	private Rigidbody rb;
 
-    public StaminaBarController StaminaBar;
-    private int health = 3;
+    public HealthController HealthController;
+    public StaminaBarController StaminaBarController;
+    private int maxHearts = 3;
+    private int currentHearts;
     private bool isJumping;
     private float maxStamina = 100;
     [SerializeField]
-    private float staminaDecreaseValue = 20;
+    private float staminaDecreaseValue = 1.0f;
     [SerializeField]
-    private float staminaIncreaseValue = 25;
+    private float staminaIncreaseValue = 1.5f;
     private float currentStamina;
 
 
@@ -48,6 +48,8 @@ public class PlayerController : MonoBehaviour
 		// Default to idle spriterenderer
 		ChangeState(PlayerState.Idle);
 
+	    currentHearts = maxHearts;
+        HealthController.DrawHearts(currentHearts);
 	    currentStamina = maxStamina;
     }
 	
@@ -74,9 +76,9 @@ public class PlayerController : MonoBehaviour
 		// Of we're crouching
 		else if(vert < 0)
 		{
-		    isJumping = false;
 			ChangeState(PlayerState.Crouch);
-		}
+		    isJumping = false;
+        }
 
 		// We're not jumping or crouching
 		else {
@@ -129,28 +131,58 @@ public class PlayerController : MonoBehaviour
 
 	}
 
-
 	void SetSprite(Sprite sprite)
 	{
 		playerSpriteRenderer.sprite = sprite;
 	}
 
-    private void UpdateHealth()
+    /// <summary>
+    /// If the player gets hit by an enemy, update the health.
+    /// </summary>
+    /// <param name="col"></param>
+    void OnColliderEnter(Collider col)
     {
-        //todo
+        if (col.tag == "Enemy")
+            DecreaseHealth();
     }
 
     /// <summary>
-    /// Updates the stamina
+    /// Decreases the health and check if the player is game over.
+    /// </summary>
+    private void DecreaseHealth()
+    {
+        currentHearts--;
+
+        HealthController.UpdateHearts(currentHearts);
+
+        if (currentHearts <= 0)
+            GameOver();
+    }
+
+    /// <summary>
+    /// Updates the stamina.
     /// </summary>
     private void UpdateStamina(bool jumping)
     {
         if (jumping)
             currentStamina -= staminaDecreaseValue;
-        else
+        else if (currentStamina < maxStamina)
             currentStamina += staminaIncreaseValue;
 
         float percentage = currentStamina / maxStamina;
-        StaminaBar.ChangeStamina(percentage);
+        StaminaBarController.ChangeStamina(percentage);
+    }
+
+    /// <summary>
+    /// When the player is game over, he spawns at the checkpoint.
+    /// </summary>
+    void GameOver()
+    {
+        // todo spawn at checkpoint
+        currentHearts = maxHearts;
+        currentStamina = maxStamina;
+
+        HealthController.RestartHearts();
+        StaminaBarController.ChangeStamina(currentStamina);
     }
 }
