@@ -15,9 +15,7 @@ public class PlayerController : MonoBehaviour
 	public float movementSpeed;
 	public float jumpHeight;
 	private Rigidbody rb;
-<<<<<<< HEAD
     private bool paused = false;
-=======
 
     public HealthController HealthController;
     public StaminaBarController StaminaBarController;
@@ -30,8 +28,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float staminaIncreaseValue = 1.5f;
     private float currentStamina;
-
->>>>>>> bba3237d00d3ea4c52e71ca026d5d69f38e11a6e
 
 	/*** State management ***/
 	public enum PlayerState {
@@ -142,14 +138,13 @@ public class PlayerController : MonoBehaviour
 		playerSpriteRenderer.sprite = sprite;
 	}
 
-<<<<<<< HEAD
     void Pause() {
         paused = true;
     }
 
     void UnPause() {
         paused = false;
-=======
+    }
     /// <summary>
     /// If the player gets hit by an enemy, update the health.
     /// </summary>
@@ -198,6 +193,5 @@ public class PlayerController : MonoBehaviour
 
         HealthController.RestartHearts();
         StaminaBarController.ChangeStamina(currentStamina);
->>>>>>> bba3237d00d3ea4c52e71ca026d5d69f38e11a6e
     }
 }
