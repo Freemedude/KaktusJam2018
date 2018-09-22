@@ -139,15 +139,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24c5f647a0f59494d898595240abec90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startFacingRight: 0
   playerSpriteRenderer: {fileID: 0}
-  playerSpriteIdle: {fileID: 21300000, guid: 6631f02163033224186805c62f36e4ff, type: 3}
-  playerSpriteLeft: {fileID: 21300000, guid: 0e13a0cb2227f5242964d06c3bb106d0, type: 3}
-  playerSpriteRight: {fileID: 21300000, guid: 5b3b727a30a2a64458a109860481a207, type: 3}
-  playerSpriteJump: {fileID: 21300000, guid: 3f72ab91e70384e4fbd58f5f05218462, type: 3}
-  playerSpriteCrouch: {fileID: 21300000, guid: e40053c5602d3f74398bf0400684fe04, type: 3}
+  playerSpriteIdleLeft: {fileID: 0}
+  playerSpriteIdleRight: {fileID: 0}
+  playerSpriteRunLeft: {fileID: 0}
+  playerSpriteRunRight: {fileID: 0}
+  playerSpriteFlyLeft: {fileID: 0}
+  playerSpriteFlyRight: {fileID: 0}
+  playerSpriteIdleLeftMail: {fileID: 0}
+  playerSpriteIdleRightMail: {fileID: 0}
+  playerSpriteRunLeftMail: {fileID: 0}
+  playerSpriteRunRightMail: {fileID: 0}
+  playerSpriteFlyLeftMail: {fileID: 0}
+  playerSpriteFlyRightMail: {fileID: 0}
+  flapCooldown: 0
+  flapCooldownCounter: 0
   movementSpeed: 10
-  jumpHeight: 10
-  currentState: 0
+  flapStrength: 0
+  mailToDeliver: 3
+  spawnPoint: {fileID: 0}
+  HealthController: {fileID: 0}
+  StaminaBarController: {fileID: 0}
+  staminaDecreaseValue: 1
+  staminaIncreaseValue: 1.5
+  isFlying: 0
+  isHolding: 0
+  isMoving: 0
+  facing: 0
 --- !u!212 &212527371947239734
 SpriteRenderer:
   m_ObjectHideFlags: 1
