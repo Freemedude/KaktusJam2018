@@ -7,11 +7,11 @@ public class HealthController : MonoBehaviour
     public GameObject HeartPrefab;
     private List<GameObject> hearts = new List<GameObject>();
 
-    private void Awake()
-    {
-        var placeholderHeart = transform.Find("Heart_Placeholder");
-        placeholderHeart.gameObject.SetActive(false);
-    }
+    //private void Awake()
+    //{
+    //    var placeholderHeart = transform.Find("Heart_Placeholder");
+    //    placeholderHeart.gameObject.SetActive(false);
+    //}
 
     /// <summary>
     /// Draws the hearts at the start of the game.
@@ -21,7 +21,7 @@ public class HealthController : MonoBehaviour
         for (int i = 0; i < currentHearts; i++)
         {
             GameObject heart = Instantiate(HeartPrefab,
-                new Vector3(transform.position.x + 65 * i, transform.position.y, transform.position.z),
+                new Vector3(transform.position.x + 33 * i, transform.position.y, transform.position.z),
                 Quaternion.identity, transform);
                 hearts.Add(heart);
         }
