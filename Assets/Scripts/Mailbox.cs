@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class Mailbox : MonoBehaviour {
 
-    private GameObject spawnpoint, mainCamera, player;
+    public GameObject spawnpoint, mainCamera;
+    public PlayerController player;
     public DialogueManager dialogueManager;
     private Component dialogueTriggerScript;
     public bool firstCollision = true;
     public bool inDialogue = false;
 	// Use this for initialization
 	void Start () {
-        spawnpoint = GameObject.Find("SpawnPoint");
-        mainCamera = GameObject.Find("Main Camera");
-        player = GameObject.Find("Player");
+        //spawnpoint = GameObject.Find("SpawnPoint");
+        //mainCamera = GameObject.Find("Main Camera");
+        //player = GameObject.Find("Player");
         if (GetComponent("DialogueTrigger") != null) {
             dialogueTriggerScript = GetComponent("DialogueTrigger");
         } else {
@@ -32,10 +33,12 @@ public class Mailbox : MonoBehaviour {
 	}
 
     void OnCollisionEnter(Collision col) {
-        if (col.gameObject.name == "Player" && firstCollision) {
+        if (firstCollision && player.isHolding) {
+            
             dialogueTriggerScript.SendMessage("TriggerDialogue");
             movePlayerSpawnPoint();
             Pause();
+            
 
             firstCollision = false;
         }
@@ -51,7 +54,7 @@ public class Mailbox : MonoBehaviour {
         gos = GameObject.FindGameObjectsWithTag("Enemy");
         mainCamera.SendMessage("Pause");
         player.SendMessage("Pause");
-        player.SendMessage("DropObject");
+        player.SendMessage("MailDelivered");
         for (var i = 0; i < gos.Length; i++) {
             gos[i].SendMessage("Pause");
         }

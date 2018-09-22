@@ -1,38 +1,22 @@
 ﻿using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
-    [Header("Player graphic settings")]
-    public bool startFacingRight;
-    public SpriteRenderer playerSpriteRenderer;
-
-    public Sprite playerSpriteIdleLeft;
-    public Sprite playerSpriteIdleRight;
-    public Sprite playerSpriteRunLeft;
-    public Sprite playerSpriteRunRight;
-    public Sprite playerSpriteFlyLeft;
-    public Sprite playerSpriteFlyRight;
-
-    public Sprite playerSpriteIdleLeftMail;
-    public Sprite playerSpriteIdleRightMail;
-    public Sprite playerSpriteRunLeftMail;
-    public Sprite playerSpriteRunRightMail;
-    public Sprite playerSpriteFlyLeftMail;
-    public Sprite playerSpriteFlyRightMail;
-
 
     [Header("Player movement settings")]
     public float flapCooldown;
     public float flapCooldownCounter = 0;
 
-
     public float movementSpeed;
     public float flapStrength;
     private Rigidbody rb;
     private bool paused = false;
+    public float mailToDeliver = 3; //Change this to the number of mailboxes to deliver
 
     public GameObject spawnPoint;
-    public HealthController HealthController;
-    public StaminaBarController StaminaBarController;
+    private HealthController HealthController;
+    private StaminaBarController StaminaBarController;
+    private Animator animator;
+    private SpriteRenderer spriteRenderer;
     private int maxHearts = 3;
     private int currentHearts;
     private float maxStamina = 100;
@@ -41,6 +25,8 @@ public class PlayerController : MonoBehaviour {
     [SerializeField]
     private float staminaIncreaseValue = 1.5f;
     private float currentStamina;
+    private AudioSource[] sounds;
+    public Camera mainCamera;
 
 
     /*** State management ***/
@@ -58,12 +44,17 @@ public class PlayerController : MonoBehaviour {
     void Start() {
         // Get components
         rb = GetComponent<Rigidbody>();
+        animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        sounds = GetComponents<AudioSource>();
+        facing = Facing.Right;
 
         // Default to idle spriterenderer
         UpdateState();
 
-        facing = startFacingRight ? Facing.Right : Facing.Left;
-
+        // get the health controller and stamina controller in the scene
+        HealthController = FindObjectOfType<HealthController>();
+        StaminaBarController = FindObjectOfType<StaminaBarController>();
         currentHearts = maxHearts;
         HealthController.DrawHearts(currentHearts);
         currentStamina = maxStamina;
@@ -78,7 +69,12 @@ public class PlayerController : MonoBehaviour {
         flapCooldownCounter -= Time.deltaTime;
 
         var hori = Input.GetAxis("Horizontal");
-        var jump = Input.GetKeyDown("joystick 1 button 0");
+        string[] controllers = Input.GetJoystickNames();
+        bool jump;
+        if (controllers.Length == 0 || controllers[0] == "")
+            jump = Input.GetKeyDown(KeyCode.Space);
+        else
+            jump = Input.GetKeyDown("joystick 1 button 0");
 
         isMoving = (hori != 0f || isFlying);
 
@@ -89,19 +85,22 @@ public class PlayerController : MonoBehaviour {
     void HandleMovement(float hori, bool jump) {
         var flapped = false;
         if (jump && flapCooldownCounter < 0) {
-            flapped = currentStamina > staminaDecreaseValue;
+            flapped = currentStamina >= staminaDecreaseValue;
             flapCooldownCounter = flapCooldown;
         }
 
         if (hori < 0) {
             facing = Facing.Left;
+            spriteRenderer.flipX = true;
         }
         else if (hori > 0) {
             facing = Facing.Right;
+            spriteRenderer.flipX = false;
         }
 
         // If we're jumping
         if (flapped && currentStamina >= staminaDecreaseValue) {
+            sounds[1].Play();
             rb.AddForce(Vector3.up * flapStrength);
         }
 
@@ -112,90 +111,81 @@ public class PlayerController : MonoBehaviour {
         UpdateStamina(flapped);
     }
 
-    public void UpdateState() {
+    public void UpdateState()
+    {
         // If we do not move, set sprite to idle with correct facing
-        if (!isMoving) {
-            //not holding anything
-            if (!isHolding) {
-                switch (facing) {
-                    case Facing.Left:
-                        SetSprite(playerSpriteIdleLeft);
-                        break;
-                    case Facing.Right:
-                        SetSprite(playerSpriteIdleRight);
-                        break;
-                }
-            //holding
-            } else {
-                switch (facing) {
-                    case Facing.Left:
-                        SetSprite(playerSpriteIdleLeftMail);
-                        break;
-                    case Facing.Right:
-                        SetSprite(playerSpriteIdleRightMail);
-                        break;
-                }
-            }
-        }
+        if (!isMoving)
+            SetIdleAnimation();
         // We are moving
-        else {
+        else
+        {
             // We are not flying
-            if (!isFlying) {
-                // We are not holding anything, so just set sprite to movement in correct direction
-                if (!isHolding) {
-                    switch (facing) {
-                        case Facing.Left:
-                            SetSprite(playerSpriteRunLeft);
-                            break;
-                        case Facing.Right:
-                            SetSprite(playerSpriteRunRight);
-                            break;
-                    }
-                }
-                // We are holding something, so set holding with correct direction
-                else {
-                    switch (facing) {
-                        case Facing.Left:
-                            SetSprite(playerSpriteRunLeftMail);
-                            break;
-                        case Facing.Right:
-                            SetSprite(playerSpriteRunRightMail);
-                            break;
-                    }
-                }
-
-            }
+            if (!isFlying)
+                SetWalkAnimation();
             // We are flying
-            else {
-                // We are not holding anything, so just set sprite to movement in correct direction
-                if (!isHolding) {
-                    switch (facing) {
-                        case Facing.Left:
-                            SetSprite(playerSpriteFlyLeft);
-                            break;
-                        case Facing.Right:
-                            SetSprite(playerSpriteFlyRight);
-                            break;
-                    }
-                }
-                // We are holding something and flying, set direction
-                else {
-                    switch (facing) {
-                        case Facing.Left:
-                            SetSprite(playerSpriteFlyLeftMail);
-                            break;
-                        case Facing.Right:
-                            SetSprite(playerSpriteFlyRightMail);
-                            break;
-                    }
-                }
-            }
-
+            else
+                SetFlyAnimation();
         }
     }
 
-    void SetSprite(Sprite sprite) {
-        playerSpriteRenderer.sprite = sprite;
+    /// <summary>
+    /// Sets animation to idle animation
+    /// </summary>
+    void SetIdleAnimation()
+    {
+        // todo add holding animation!
+        if (isHolding)
+        {
+            animator.SetBool("isIdle", true);
+            animator.SetBool("isWalking", false);
+            animator.SetBool("isFlying", false);
+        }
+        else
+        {
+            animator.SetBool("isIdle", true);
+            animator.SetBool("isWalking", false);
+            animator.SetBool("isFlying", false);
+        }
+    }
+
+    /// <summary>
+    /// Sets animation to walking animation
+    /// </summary>
+    void SetWalkAnimation()
+    {
+        if (isHolding)
+        {
+            animator.SetBool("isIdle", false);
+            animator.SetBool("isWalking", true);
+            animator.SetBool("isFlying", false);
+        }
+        // todo add holding animation!
+        else
+        {
+            animator.SetBool("isIdle", false);
+            animator.SetBool("isWalking", true);
+            animator.SetBool("isFlying", false);
+        }
+    }
+
+    /// <summary>
+    /// Sets animation to flying animation
+    /// </summary>
+    void SetFlyAnimation()
+    {
+        if (isHolding)
+        {
+            animator.SetBool("isIdle", false);
+            animator.SetBool("isWalking", false);
+            animator.SetBool("isFlying", true);
+        }
+        // todo add holding animation!
+        else
+        {
+            animator.SetBool("isIdle", false);
+            animator.SetBool("isWalking", false);
+            animator.SetBool("isFlying", true);
+        }
     }
 
     void Pause() {
@@ -207,25 +197,18 @@ public class PlayerController : MonoBehaviour {
     }
 
     /// <summary>
-    /// If the player gets hit by an enemy, update the health.
 	/// If the player hits the ground, say we're not flying.
-    /// </summary>
-    /// <param name="col"></param>
-	void OnColliderEnter(Collider col) {
-        if (col.tag == "Enemy")
-            DecreaseHealth();
-
-        UpdateState();
-    }
-
-    /// <summary>
-	/// If the player hits the ground, say we're not flying.
+	/// If the player gets hit by an enemy, decrease health.
     /// </summary>
 	private void OnCollisionEnter(Collision col) {
 
-        if (col.gameObject.tag == "Ground") {
+        if (col.gameObject.tag == "Ground")
+        {
             isFlying = false;
         }
+
+        if (col.gameObject.tag == "Enemy")
+            DecreaseHealth();
     }
 
 
@@ -241,7 +224,7 @@ public class PlayerController : MonoBehaviour {
     /// <summary>
     /// Decreases the health and check if the player is game over.
     /// </summary>
-    private void DecreaseHealth() {
+    public void DecreaseHealth() {
         currentHearts--;
 
         HealthController.UpdateHearts(currentHearts);
@@ -278,16 +261,18 @@ public class PlayerController : MonoBehaviour {
 
     //On trigger enter test
     private void OnTriggerEnter(Collider col) {
-        if (col.gameObject.name == "Death Zone") {
-            col.gameObject.transform.parent.SendMessage("GameOver");
-            GameOver();
-        } else if (col.gameObject.tag == "Mail") {
+        if (col.gameObject.tag == "Mail")
+        {
+            sounds[0].Play(); //Yeah!
             isHolding = true;
             Destroy(col.gameObject);
         }
     }
 
-    private void DropObject() {
+    private void MailDelivered() {
         isHolding = false;
+        if(--mailToDeliver <= 0) {
+            //winState();
+        }
     }
 }

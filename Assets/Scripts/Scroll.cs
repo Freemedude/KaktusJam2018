@@ -24,8 +24,8 @@ public class Scroll : MonoBehaviour {
         scrollSpeed = 0.005f;
     }
 
-    void GameOver() {
-        Vector3 offset = new Vector3(0, 0, -10);
+    void ResetPosition() {
+        Vector3 offset = new Vector3(-spawnPoint.transform.position.x, 0, -10);
         transform.position = spawnPoint.transform.position + offset;
     }
 }
