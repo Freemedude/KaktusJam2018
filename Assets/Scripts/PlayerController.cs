@@ -253,13 +253,10 @@ public class PlayerController : MonoBehaviour {
 
     //On trigger enter test
     private void OnTriggerEnter(Collider col) {
-<<<<<<< HEAD
-        if (col.gameObject.tag == "Mail") {
-=======
+    
         if (col.gameObject.tag == "Mail")
         {
-            sounds[0].Play(); //Yeah!
->>>>>>> 34b068f36306bf1869c5d4be5dd1598cdb07f256
+
             isHolding = true;
             Destroy(col.gameObject);
         }
