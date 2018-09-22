@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour {
     [SerializeField]
     private float staminaIncreaseValue = 1.5f;
     private float currentStamina;
+    private AudioSource[] sounds;
 
 
     /*** State management ***/
@@ -44,7 +45,7 @@ public class PlayerController : MonoBehaviour {
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-
+        sounds = GetComponents<AudioSource>();
         facing = Facing.Right;
 
         // Default to idle spriterenderer
@@ -90,6 +91,7 @@ public class PlayerController : MonoBehaviour {
 
         // If we're jumping
         if (flapped && currentStamina >= staminaDecreaseValue) {
+            sounds[1].Play();
             rb.AddForce(Vector3.up * flapStrength);
         }
 
@@ -260,6 +262,7 @@ public class PlayerController : MonoBehaviour {
             col.gameObject.transform.parent.SendMessage("GameOver");
             GameOver();
         } else if (col.gameObject.tag == "Mail") {
+            sounds[0].Play(); //Yeah!
             isHolding = true;
             Destroy(col.gameObject);
         }
