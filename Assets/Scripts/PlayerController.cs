@@ -267,6 +267,7 @@ public class PlayerController : MonoBehaviour {
     /// When the player is game over, he spawns at the checkpoint.
     /// </summary>
     void GameOver() {
+        isHolding = false;
         this.transform.position = spawnPoint.transform.position;
         currentHearts = maxHearts;
         currentStamina = maxStamina;
@@ -280,7 +281,6 @@ public class PlayerController : MonoBehaviour {
         if (col.gameObject.name == "Death Zone") {
             col.gameObject.transform.parent.SendMessage("GameOver");
             GameOver();
-            isHolding = false;
         } else if (col.gameObject.tag == "Mail") {
             isHolding = true;
             Destroy(col.gameObject);
