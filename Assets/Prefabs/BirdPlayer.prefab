@@ -9,21 +9,21 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1266385078596246}
+  m_RootGameObject: {fileID: 1660447777466166}
   m_IsPrefabAsset: 1
---- !u!1 &1266385078596246
+--- !u!1 &1660447777466166
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4404371705259564}
-  - component: {fileID: 114281379230695698}
-  - component: {fileID: 54842224503436056}
-  - component: {fileID: 212830417598490754}
-  - component: {fileID: 95762869042870780}
-  - component: {fileID: 65023752506064114}
+  - component: {fileID: 4211904656521468}
+  - component: {fileID: 114039978591791886}
+  - component: {fileID: 54970911434862328}
+  - component: {fileID: 212199321295379500}
+  - component: {fileID: 95270235951591382}
+  - component: {fileID: 65318626784158414}
   m_Layer: 0
   m_Name: BirdPlayer
   m_TagString: Untagged
@@ -31,12 +31,12 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4404371705259564
+--- !u!4 &4211904656521468
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1266385078596246}
+  m_GameObject: {fileID: 1660447777466166}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2, y: 1, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
@@ -44,12 +44,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &54842224503436056
+--- !u!54 &54970911434862328
 Rigidbody:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1266385078596246}
+  m_GameObject: {fileID: 1660447777466166}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -59,25 +59,25 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 120
   m_CollisionDetection: 0
---- !u!65 &65023752506064114
+--- !u!65 &65318626784158414
 BoxCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1266385078596246}
+  m_GameObject: {fileID: 1660447777466166}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.33, y: 0.32, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!95 &95762869042870780
+--- !u!95 &95270235951591382
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1266385078596246}
+  m_GameObject: {fileID: 1660447777466166}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: b3d8101c2e1018646b7319f7558c0127, type: 2}
@@ -89,12 +89,12 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114281379230695698
+--- !u!114 &114039978591791886
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1266385078596246}
+  m_GameObject: {fileID: 1660447777466166}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 24c5f647a0f59494d898595240abec90, type: 3}
@@ -103,22 +103,23 @@ MonoBehaviour:
   flapCooldown: 0
   flapCooldownCounter: 0
   movementSpeed: 10
-  flapStrength: 0
+  flapStrength: 110
+  mailToDeliver: 3
   spawnPoint: {fileID: 0}
   HealthController: {fileID: 0}
   StaminaBarController: {fileID: 0}
-  staminaDecreaseValue: 1
-  staminaIncreaseValue: 1.5
+  staminaDecreaseValue: 10
+  staminaIncreaseValue: 15
   isFlying: 0
   isHolding: 0
   isMoving: 0
   facing: 0
---- !u!212 &212830417598490754
+--- !u!212 &212199321295379500
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1266385078596246}
+  m_GameObject: {fileID: 1660447777466166}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
