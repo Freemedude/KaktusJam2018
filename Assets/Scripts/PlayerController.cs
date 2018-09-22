@@ -205,4 +205,12 @@ public class PlayerController : MonoBehaviour
         HealthController.RestartHearts();
         StaminaBarController.ChangeStamina(currentStamina);
     }
+
+    //On trigger enter test
+    private void OnTriggerEnter(Collider col) {
+        if (col.gameObject.name == "Death Zone") {
+            col.gameObject.transform.parent.SendMessage("GameOver");
+            GameOver();
+        }
+    }
 }
