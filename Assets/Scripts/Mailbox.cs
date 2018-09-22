@@ -42,7 +42,7 @@ public class Mailbox : MonoBehaviour {
     }
 
     void movePlayerSpawnPoint() {
-        spawnpoint.transform.position = this.transform.position;
+        spawnpoint.transform.position = this.transform.position + Vector3.up * 1.5f;
     }
 
     void Pause() {

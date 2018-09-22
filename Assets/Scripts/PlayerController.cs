@@ -11,7 +11,13 @@ public class PlayerController : MonoBehaviour
 	public Sprite playerSpriteFlyLeft;
 	public Sprite playerSpriteFlyRight;
 
-	[Header("Player movement settings")]
+    public Sprite playerSpriteIdleMail;
+    public Sprite playerSpriteLeftMail;
+    public Sprite playerSpriteRightMail;
+    public Sprite playerSpriteFlyLeftMail;
+    public Sprite playerSpriteFlyRightMail;
+
+    [Header("Player movement settings")]
 	public float flapCooldown;
 	public float flapCooldownCounter = 0;
 
@@ -26,7 +32,7 @@ public class PlayerController : MonoBehaviour
     public StaminaBarController StaminaBarController;
     private int maxHearts = 3;
     private int currentHearts;
-    private bool isFlying;
+    private bool isFlying, holdingMail;
     private float maxStamina = 100;
     [SerializeField]
     private float staminaDecreaseValue = 1.0f;
@@ -40,8 +46,14 @@ public class PlayerController : MonoBehaviour
 		MovingLeft, 
 		MovingRight, 
 		FlyingLeft, 
-		FlyingRight
-		
+		FlyingRight,
+
+        IdleMail,
+        MovingLeftMail,
+        MovingRightMail,
+        FlyingLeftMail,
+        FlyingRightMail,
+
     }
 	[HideInInspector]
 	public PlayerState currentState;
@@ -105,17 +117,31 @@ public class PlayerController : MonoBehaviour
 		{
 			if(hori < 0)
 			{
-				ChangeState(PlayerState.MovingLeft);
+                if (!holdingMail) {
+                    ChangeState(PlayerState.MovingLeft);
+                } else {
+                    ChangeState(PlayerState.MovingLeftMail);
+                }
 			}
 			else if(hori > 0)
 			{
-				ChangeState(PlayerState.MovingRight);
-			}
+                if (!holdingMail) {
+                    ChangeState(PlayerState.MovingRight);
+                }
+                else {
+                    ChangeState(PlayerState.MovingRightMail);
+                }
+            }
 
 				// We're not moving at all
 			else {
-				ChangeState(PlayerState.Idle);
-			}
+                if (!holdingMail) {
+                    ChangeState(PlayerState.Idle);
+                }
+                else {
+                    ChangeState(PlayerState.IdleMail);
+                }
+            }
 			isFlying = false;
 		}
 
@@ -140,7 +166,16 @@ public class PlayerController : MonoBehaviour
 			case PlayerState.MovingRight:
 				SetSprite(playerSpriteRight);
 				break;
-		}
+            case PlayerState.IdleMail:
+                SetSprite(playerSpriteIdleMail);
+                break;
+            case PlayerState.MovingLeftMail:
+                SetSprite(playerSpriteLeftMail);
+                break;
+            case PlayerState.MovingRightMail:
+                SetSprite(playerSpriteRightMail);
+                break;
+        }
 
 	}
 
@@ -206,11 +241,16 @@ public class PlayerController : MonoBehaviour
         StaminaBarController.ChangeStamina(currentStamina);
     }
 
-    //On trigger enter test
+    //On trigger enter
     private void OnTriggerEnter(Collider col) {
         if (col.gameObject.name == "Death Zone") {
             col.gameObject.transform.parent.SendMessage("GameOver");
             GameOver();
+            holdingMail = false;
+        } else if(col.gameObject.tag == "Mail") {
+            holdingMail = true;
+            Destroy(col.gameObject);
         }
     }
+
 }
