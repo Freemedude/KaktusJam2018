@@ -8,12 +8,16 @@ public class PlayerController : MonoBehaviour
 	public Sprite playerSpriteIdle;
 	public Sprite playerSpriteLeft;
 	public Sprite playerSpriteRight;
-	public Sprite playerSpriteJump;
-	public Sprite playerSpriteCrouch;
+	public Sprite playerSpriteFlyLeft;
+	public Sprite playerSpriteFlyRight;
 
 	[Header("Player movement settings")]
+	public float flapCooldown;
+	public float flapCooldownCounter = 0;
+
+
 	public float movementSpeed;
-	public float jumpHeight;
+	public float flapStrength;
 	private Rigidbody rb;
     private bool paused = false;
 
@@ -22,7 +26,7 @@ public class PlayerController : MonoBehaviour
     public StaminaBarController StaminaBarController;
     private int maxHearts = 3;
     private int currentHearts;
-    private bool isJumping;
+    private bool isFlying;
     private float maxStamina = 100;
     [SerializeField]
     private float staminaDecreaseValue = 1.0f;
@@ -35,17 +39,20 @@ public class PlayerController : MonoBehaviour
 		Idle, 
 		MovingLeft, 
 		MovingRight, 
-		Jumping,
-		Crouch
+		FlyingLeft, 
+		FlyingRight
+		
     }
 	[HideInInspector]
 	public PlayerState currentState;
 
 
 	// Use this for initialization
-	void Start () {
+	void Start ()
+	{
 		// Get components
 		rb = GetComponent<Rigidbody>();
+
 		// Default to idle spriterenderer
 		ChangeState(PlayerState.Idle);
 
@@ -55,38 +62,47 @@ public class PlayerController : MonoBehaviour
     }
 	
 	// Update is called once per frame
-	void Update () {
-        if (!paused) {
-            var hori = Input.GetAxis("Horizontal");
-            var vert = Input.GetAxis("Vertical");
+	void Update ()
+	{
+		if(paused)
+		{
+			return;
+		}
+		
+		flapCooldownCounter -= Time.deltaTime;
+			
+		
+		var hori = Input.GetAxis("Horizontal");
+		var jump = Input.GetKey("joystick 1 button 0");
+	
+		HandleMovement(hori, jump);
 
-            HandleMovement(hori, vert);
-        }
 	}
 
-	void HandleMovement(float hori, float vert)
+	void HandleMovement(float hori, bool jump)
 	{
-		Vector2 movementVector = Vector2.zero;
-		
-		// If we're jumping
-		if(vert > 0 && currentStamina >= staminaDecreaseValue)
+		var flapped = false;
+		if(flapCooldownCounter < 0)
 		{
-			movementVector = new Vector2(hori * movementSpeed, vert * jumpHeight);
-			ChangeState(PlayerState.Jumping);
-		    isJumping = true;
+			flapped = jump;
+			flapCooldownCounter = flapCooldown;
+		}
+		var movingLeft = hori < 0;
+		var movingRight = hori > 0;
+
+
+		// If we're jumping
+		if(flapped && currentStamina >= staminaDecreaseValue)
+		{
+			rb.AddForce(Vector3.up * flapStrength);
+		    isFlying = true;
 		}
 
-		// Of we're crouching
-		else if(vert < 0)
-		{
-			ChangeState(PlayerState.Crouch);
-		    isJumping = false;
-        }
-
 		// We're not jumping or crouching
-		else {
-			movementVector = new Vector2(hori * movementSpeed, 0);
+		transform.Translate(new Vector2(movementSpeed * Time.deltaTime * hori, 0));
 
+		if(!flapped)
+		{
 			if(hori < 0)
 			{
 				ChangeState(PlayerState.MovingLeft);
@@ -96,15 +112,15 @@ public class PlayerController : MonoBehaviour
 				ChangeState(PlayerState.MovingRight);
 			}
 
-			// We're not moving at all
+				// We're not moving at all
 			else {
 				ChangeState(PlayerState.Idle);
 			}
-
-		    isJumping = false;
+			isFlying = false;
 		}
-		rb.AddForce(movementVector);
-	    UpdateStamina(isJumping);
+
+		
+	    UpdateStamina(isFlying);
     }
 
 	public void ChangeState(PlayerState newState)
@@ -123,13 +139,7 @@ public class PlayerController : MonoBehaviour
 				break;	
 			case PlayerState.MovingRight:
 				SetSprite(playerSpriteRight);
-				break;	
-			case PlayerState.Jumping:
-				SetSprite(playerSpriteJump);
-				break;	
-			case PlayerState.Crouch:
-				SetSprite(playerSpriteCrouch);
-				break;	
+				break;
 		}
 
 	}

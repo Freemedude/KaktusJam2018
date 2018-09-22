@@ -501,9 +501,19 @@ Prefab:
       propertyPath: HealthController
       value: 
       objectReference: {fileID: 564919895}
+    - target: {fileID: 114994611752175558, guid: 0fae14a79d7fab642bc3044dfe248005,
+        type: 2}
+      propertyPath: playerSpriteRenderer
+      value: 
+      objectReference: {fileID: 1304058476}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0fae14a79d7fab642bc3044dfe248005, type: 2}
   m_IsPrefabAsset: 0
+--- !u!212 &1304058476 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 212527371947239734, guid: 0fae14a79d7fab642bc3044dfe248005,
+    type: 2}
+  m_PrefabInternal: {fileID: 1272205215}
 --- !u!1 &1310383842
 GameObject:
   m_ObjectHideFlags: 0
