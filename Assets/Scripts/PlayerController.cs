@@ -72,7 +72,6 @@ public class PlayerController : MonoBehaviour {
         var hori = Input.GetAxis("Horizontal");
         var jump = Input.GetKeyDown("joystick 1 button 0");
         string[] controllers = Input.GetJoystickNames();
-        bool jump;
         if (controllers.Length == 0 || controllers[0] == "")
             jump = Input.GetKeyDown(KeyCode.Space);
         else
@@ -263,16 +262,11 @@ public class PlayerController : MonoBehaviour {
 
     //On trigger enter test
     private void OnTriggerEnter(Collider col) {
-<<<<<<< HEAD
     
-        if (col.gameObject.tag == "Mail")
-        {
 
-=======
         if (col.gameObject.tag == "Mail")
         {
             sounds[0].Play(); //Yeah!
->>>>>>> 3faced6f0ec44771403a796a048b62ed5a3ec72e
             isHolding = true;
             Destroy(col.gameObject);
         }
