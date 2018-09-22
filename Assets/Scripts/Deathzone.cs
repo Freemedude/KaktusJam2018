@@ -14,6 +14,7 @@ public class Deathzone : MonoBehaviour {
 		
 	}
 
+
     private void OnTriggerEnter(Collider col) {
         if (col.gameObject.name == "Player") {
             collided = true;
