@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
 	private Rigidbody rb;
     private bool paused = false;
 
+    public GameObject spawnPoint;
     public HealthController HealthController;
     public StaminaBarController StaminaBarController;
     private int maxHearts = 3;
@@ -55,12 +56,12 @@ public class PlayerController : MonoBehaviour
 	
 	// Update is called once per frame
 	void Update () {
-        //if (paused = false) { Add unpause bedore you readd this
+        if (!paused) {
             var hori = Input.GetAxis("Horizontal");
             var vert = Input.GetAxis("Vertical");
 
             HandleMovement(hori, vert);
-        //}
+        }
 	}
 
 	void HandleMovement(float hori, float vert)
@@ -142,7 +143,7 @@ public class PlayerController : MonoBehaviour
         paused = true;
     }
 
-    void UnPause() {
+    void Unpause() {
         paused = false;
     }
     /// <summary>
@@ -187,7 +188,7 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     void GameOver()
     {
-        // todo spawn at checkpoint
+        this.transform.position = spawnPoint.transform.position;
         currentHearts = maxHearts;
         currentStamina = maxStamina;
 

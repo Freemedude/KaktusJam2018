@@ -18,4 +18,8 @@ public class Scroll : MonoBehaviour {
     void Pause() {
         scrollSpeed = 0f;
     }
+
+    void Unpause() {
+        scrollSpeed = 0.005f;
+    }
 }
