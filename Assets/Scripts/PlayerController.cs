@@ -25,7 +25,6 @@ public class PlayerController : MonoBehaviour {
     [SerializeField]
     private float staminaIncreaseValue = 1.5f;
     private float currentStamina;
-    private AudioSource[] sounds;
 
 
     /*** State management ***/
@@ -45,7 +44,7 @@ public class PlayerController : MonoBehaviour {
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        sounds = GetComponents<AudioSource>();
+
         facing = Facing.Right;
 
         // Default to idle spriterenderer
@@ -68,8 +67,7 @@ public class PlayerController : MonoBehaviour {
         flapCooldownCounter -= Time.deltaTime;
 
         var hori = Input.GetAxis("Horizontal");
-        string[] controllers = Input.GetJoystickNames();
-        bool jump = controllers[0] == "" ? Input.GetKeyDown(KeyCode.Space) : Input.GetKeyDown("joystick 1 button 0");
+        var jump = Input.GetKeyDown("joystick 1 button 0");
 
         isMoving = (hori != 0f || isFlying);
 
@@ -95,7 +93,6 @@ public class PlayerController : MonoBehaviour {
 
         // If we're jumping
         if (flapped && currentStamina >= staminaDecreaseValue) {
-            sounds[1].Play();
             rb.AddForce(Vector3.up * flapStrength);
         }
 
@@ -262,15 +259,7 @@ public class PlayerController : MonoBehaviour {
 
     //On trigger enter test
     private void OnTriggerEnter(Collider col) {
-<<<<<<< HEAD
-        if (col.gameObject.name == "Death Zone") {
-            col.gameObject.transform.parent.SendMessage("GameOver");
-            GameOver();
-        } else if (col.gameObject.tag == "Mail") {
-            sounds[0].Play(); //Yeah!
-=======
         if (col.gameObject.tag == "Mail") {
->>>>>>> e867cdd6a2ea818f0297811658e48ce854e3ba89
             isHolding = true;
             Destroy(col.gameObject);
         }
