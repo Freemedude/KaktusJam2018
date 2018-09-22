@@ -5,6 +5,7 @@ using UnityEngine;
 public class Deathzone : MonoBehaviour {
     // Use this for initialization
     public bool collided = false;
+    public GameObject spawnPoint;
 	void Start () {
 
 	}
@@ -16,10 +17,11 @@ public class Deathzone : MonoBehaviour {
 
 
     private void OnTriggerEnter(Collider col) {
-        if (col.gameObject.name == "Player") {
+        if (col.gameObject.tag == "Player") {
             collided = true;
-            col.gameObject.SendMessage("GameOver");
-            this.transform.parent.SendMessage("GameOver");
+            PlayerController player = col.gameObject.GetComponent<PlayerController>();
+            player.DecreaseHealth();
+            col.gameObject.transform.position = spawnPoint.transform.position;
         }
     }
 }
