@@ -1,0 +1,65 @@
+{ "frames": {
+   "Bird 0.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 95, "h": 195 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 80, "y": 11, "w": 95, "h": 195 },
+    "sourceSize": { "w": 200, "h": 220 },
+    "duration": 100
+   },
+   "Bird 1.aseprite": {
+    "frame": { "x": 95, "y": 0, "w": 117, "h": 193 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 80, "y": 13, "w": 117, "h": 193 },
+    "sourceSize": { "w": 200, "h": 220 },
+    "duration": 100
+   },
+   "Bird 2.aseprite": {
+    "frame": { "x": 212, "y": 0, "w": 115, "h": 187 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 81, "y": 13, "w": 115, "h": 187 },
+    "sourceSize": { "w": 200, "h": 220 },
+    "duration": 100
+   },
+   "Bird 3.aseprite": {
+    "frame": { "x": 327, "y": 0, "w": 99, "h": 194 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 81, "y": 12, "w": 99, "h": 194 },
+    "sourceSize": { "w": 200, "h": 220 },
+    "duration": 100
+   },
+   "Bird 4.aseprite": {
+    "frame": { "x": 426, "y": 0, "w": 95, "h": 194 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 81, "y": 12, "w": 95, "h": 194 },
+    "sourceSize": { "w": 200, "h": 220 },
+    "duration": 100
+   }
+ },
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.2.9-x64",
+  "image": "C:\\Users\\HPuser\\Desktop\\Bird_walking_animation.png",
+  "format": "RGBA8888",
+  "size": { "w": 1000, "h": 220 },
+  "scale": "1",
+  "frameTags": [
+  ],
+  "layers": [
+   { "name": "head", "group": "Bird_running", "opacity": 255, "blendMode": "normal" },
+   { "name": "tail", "group": "Bird_running", "opacity": 255, "blendMode": "normal" },
+   { "name": "wing left Copy", "group": "Bird_running", "opacity": 255, "blendMode": "normal" },
+   { "name": "left leg", "group": "Bird_running", "opacity": 255, "blendMode": "normal" },
+   { "name": "right leg Copy", "group": "Bird_running", "opacity": 255, "blendMode": "normal" },
+   { "name": "clothing", "group": "Bird_running", "opacity": 255, "blendMode": "normal" },
+   { "name": "wing right", "group": "Bird_running", "opacity": 255, "blendMode": "normal" },
+   { "name": "Bird_running" }
+  ],
+  "slices": [
+  ]
+ }
+}
