@@ -192,24 +192,18 @@ public class PlayerController : MonoBehaviour {
     }
 
     /// <summary>
-    /// If the player gets hit by an enemy, update the health.
 	/// If the player hits the ground, say we're not flying.
-    /// </summary>
-	void OnColliderEnter(Collider col) {
-        if (col.tag == "Enemy")
-            DecreaseHealth();
-
-        UpdateState();
-    }
-
-    /// <summary>
-	/// If the player hits the ground, say we're not flying.
+	/// If the player gets hit by an enemy, decrease health.
     /// </summary>
 	private void OnCollisionEnter(Collision col) {
 
-        if (col.gameObject.tag == "Ground") {
+        if (col.gameObject.tag == "Ground")
+        {
             isFlying = false;
         }
+
+        if (col.gameObject.tag == "Enemy")
+            DecreaseHealth();
     }
 
 
