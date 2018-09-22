@@ -75,7 +75,7 @@ public class PlayerController : MonoBehaviour {
     void HandleMovement(float hori, bool jump) {
         var flapped = false;
         if (jump && flapCooldownCounter < 0) {
-            flapped = currentStamina > staminaDecreaseValue;
+            flapped = currentStamina >= staminaDecreaseValue;
             flapCooldownCounter = flapCooldown;
         }
 
