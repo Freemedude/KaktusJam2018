@@ -42,7 +42,7 @@ public class Mailbox : MonoBehaviour {
     }
 
     void movePlayerSpawnPoint() {
-        spawnpoint.transform.position = this.transform.position;
+        spawnpoint.transform.position = this.transform.position + Vector3.up * 1.5f;
     }
 
     void Pause() {
@@ -51,6 +51,7 @@ public class Mailbox : MonoBehaviour {
         gos = GameObject.FindGameObjectsWithTag("Enemy");
         mainCamera.SendMessage("Pause");
         player.SendMessage("Pause");
+        player.SendMessage("DropObject");
         for (var i = 0; i < gos.Length; i++) {
             gos[i].SendMessage("Pause");
         }
