@@ -46,6 +46,7 @@ public class PlayerController : MonoBehaviour {
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+
         sounds = GetComponents<AudioSource>();
         facing = Facing.Right;
 
@@ -69,8 +70,8 @@ public class PlayerController : MonoBehaviour {
         flapCooldownCounter -= Time.deltaTime;
 
         var hori = Input.GetAxis("Horizontal");
+        var jump = Input.GetKeyDown("joystick 1 button 0");
         string[] controllers = Input.GetJoystickNames();
-        bool jump;
         if (controllers.Length == 0 || controllers[0] == "")
             jump = Input.GetKeyDown(KeyCode.Space);
         else
@@ -276,6 +277,8 @@ public class PlayerController : MonoBehaviour {
 
     //On trigger enter test
     private void OnTriggerEnter(Collider col) {
+    
+
         if (col.gameObject.tag == "Mail")
         {
             sounds[0].Play(); //Yeah!
