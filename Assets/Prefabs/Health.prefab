@@ -40,7 +40,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HeartPrefab: {fileID: 1021427342993076, guid: afe6cd6c49a456543b8aa8189cd0e115,
     type: 2}
-  ImageSize: 60
 --- !u!224 &224957822585581566
 RectTransform:
   m_ObjectHideFlags: 1

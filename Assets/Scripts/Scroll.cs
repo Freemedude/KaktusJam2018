@@ -14,4 +14,12 @@ public class Scroll : MonoBehaviour {
 	void Update () {
         transform.position = transform.position + Vector3.up * scrollSpeed;
 	}
+
+    void Pause() {
+        scrollSpeed = 0f;
+    }
+
+    void Unpause() {
+        scrollSpeed = 0.005f;
+    }
 }
