@@ -3,13 +3,16 @@
 public class PlayerController : MonoBehaviour 
 {
 	[Header("Player graphic settings")]
+	public bool startFacingRight;
 	public SpriteRenderer playerSpriteRenderer;
 
-	public Sprite playerSpriteIdle;
-	public Sprite playerSpriteLeft;
-	public Sprite playerSpriteRight;
+	public Sprite playerSpriteIdleLeft;
+	public Sprite playerSpriteIdleRight;
+	public Sprite playerSpriteRunLeft;
+	public Sprite playerSpriteRunRight;
 	public Sprite playerSpriteFlyLeft;
 	public Sprite playerSpriteFlyRight;
+
 
 	[Header("Player movement settings")]
 	public float flapCooldown;
@@ -26,7 +29,6 @@ public class PlayerController : MonoBehaviour
     public StaminaBarController StaminaBarController;
     private int maxHearts = 3;
     private int currentHearts;
-    private bool isFlying;
     private float maxStamina = 100;
     [SerializeField]
     private float staminaDecreaseValue = 1.0f;
@@ -34,17 +36,16 @@ public class PlayerController : MonoBehaviour
     private float staminaIncreaseValue = 1.5f;
     private float currentStamina;
 
+
 	/*** State management ***/
-	public enum PlayerState {
-		Idle, 
-		MovingLeft, 
-		MovingRight, 
-		FlyingLeft, 
-		FlyingRight
-		
-    }
-	[HideInInspector]
-	public PlayerState currentState;
+
+    public bool isFlying;
+	public bool isHolding;
+	public bool isMoving;
+	public enum Facing {
+		Left, Right
+	}
+	public Facing facing;
 
 
 	// Use this for initialization
@@ -54,7 +55,9 @@ public class PlayerController : MonoBehaviour
 		rb = GetComponent<Rigidbody>();
 
 		// Default to idle spriterenderer
-		ChangeState(PlayerState.Idle);
+		UpdateState();
+
+		facing = startFacingRight ? Facing.Right : Facing.Left;
 
 	    currentHearts = maxHearts;
         HealthController.DrawHearts(currentHearts);
@@ -68,80 +71,129 @@ public class PlayerController : MonoBehaviour
 		{
 			return;
 		}
-		
+
 		flapCooldownCounter -= Time.deltaTime;
-			
 		
 		var hori = Input.GetAxis("Horizontal");
-		var jump = Input.GetKey("joystick 1 button 0");
-	
-		HandleMovement(hori, jump);
+		var jump = Input.GetKeyDown("joystick 1 button 0");
 
+		isMoving = (hori != 0f || isFlying);
+
+		HandleMovement(hori, jump);
 	}
+
 
 	void HandleMovement(float hori, bool jump)
 	{
 		var flapped = false;
-		if(flapCooldownCounter < 0)
+		if(jump && flapCooldownCounter < 0)
 		{
-			flapped = jump;
+			flapped = currentStamina > staminaDecreaseValue;
 			flapCooldownCounter = flapCooldown;
 		}
-		var movingLeft = hori < 0;
-		var movingRight = hori > 0;
 
-
+		if(hori < 0)
+		{
+			facing = Facing.Left;
+		}
+		else if(hori > 0)
+		{
+			facing = Facing.Right;
+		}
+		
 		// If we're jumping
 		if(flapped && currentStamina >= staminaDecreaseValue)
 		{
 			rb.AddForce(Vector3.up * flapStrength);
-		    isFlying = true;
 		}
 
 		// We're not jumping or crouching
 		transform.Translate(new Vector2(movementSpeed * Time.deltaTime * hori, 0));
 
-		if(!flapped)
-		{
-			if(hori < 0)
-			{
-				ChangeState(PlayerState.MovingLeft);
-			}
-			else if(hori > 0)
-			{
-				ChangeState(PlayerState.MovingRight);
-			}
-
-				// We're not moving at all
-			else {
-				ChangeState(PlayerState.Idle);
-			}
-			isFlying = false;
-		}
-
-		
-	    UpdateStamina(isFlying);
+		UpdateState();
+		UpdateStamina(flapped);
     }
 
-	public void ChangeState(PlayerState newState)
+	public void UpdateState()
 	{
-		if(newState == currentState)
+		// If we do not move, set sprite to idle with correct facing
+		if(!isMoving)
 		{
-			return;
+			switch(facing)
+			{
+				case Facing.Left:
+					SetSprite(playerSpriteIdleLeft);
+					break;
+				case Facing.Right:
+					SetSprite(playerSpriteIdleRight);
+					break;
+			}	
 		}
-		switch(newState)
+		// We are moving
+		else
 		{
-			case PlayerState.Idle:
-				SetSprite(playerSpriteIdle);
-				break;	
-			case PlayerState.MovingLeft:
-				SetSprite(playerSpriteLeft);
-				break;	
-			case PlayerState.MovingRight:
-				SetSprite(playerSpriteRight);
-				break;
-		}
+			// We are not flying
+			if(!isFlying)
+			{
+				// We are not holding anything, so just set sprite to movement in correct direction
+				if(!isHolding)
+				{
+					switch(facing)
+					{
+						case Facing.Left:
+							SetSprite(playerSpriteRunLeft);
+							break;
+						case Facing.Right:
+							SetSprite(playerSpriteRunRight);
+							break;
+					}
+				}
+				// We are holding something, so set holding with correct direction
+				// todo: Implement this with actual sprites
+				else {
+					switch(facing)
+					{
+						case Facing.Left:
+							SetSprite(playerSpriteRunLeft);
+							break;
+						case Facing.Right:
+							SetSprite(playerSpriteRunRight);
+							break;
+					}
+				}
+				
+			}
+			// We are flying
+			else {
+				// We are not holding anything, so just set sprite to movement in correct direction
+				if(!isHolding)
+				{
+					switch(facing)
+					{
+						case Facing.Left:
+							SetSprite(playerSpriteFlyLeft);
+							break;
+						case Facing.Right:
+							SetSprite(playerSpriteFlyRight);
+							break;
+					}
+				}
+				// We are holding something and flying, set direction
+				// TODO: DO this
+				else {
+					switch(facing)
+					{
+						case Facing.Left:
+							SetSprite(playerSpriteFlyLeft);
+							break;
+						case Facing.Right:
+							SetSprite(playerSpriteFlyRight);
+							break;
+					}
+				}
+			}
 
+		}
 	}
 
 	void SetSprite(Sprite sprite)
@@ -156,15 +208,43 @@ public class PlayerController : MonoBehaviour
     void Unpause() {
         paused = false;
     }
+
     /// <summary>
     /// If the player gets hit by an enemy, update the health.
+	/// If the player hits the ground, say we're not flying.
     /// </summary>
     /// <param name="col"></param>
-    void OnColliderEnter(Collider col)
+	void OnColliderEnter(Collider col)
     {
         if (col.tag == "Enemy")
             DecreaseHealth();
+			
+		UpdateState();
     }
+
+    /// <summary>
+	/// If the player hits the ground, say we're not flying.
+    /// </summary>
+	private void OnCollisionEnter(Collision col)
+	{
+			
+		if(col.gameObject.tag == "Ground")
+		{
+			isFlying = false;
+		}
+	}
+
+
+    /// <summary>
+    /// If the player leaves ground, say we are flying
+    /// </summary>
+	private void OnCollisionExit(Collision other)
+	{
+		if(other.gameObject.tag == "Ground")
+		{
+			isFlying = true;
+		}
+	}
 
     /// <summary>
     /// Decreases the health and check if the player is game over.
@@ -186,7 +266,7 @@ public class PlayerController : MonoBehaviour
     {
         if (jumping)
             currentStamina -= staminaDecreaseValue;
-        else if (currentStamina < maxStamina)
+        else if (currentStamina < maxStamina && !isFlying)
             currentStamina += staminaIncreaseValue;
 
         float percentage = currentStamina / maxStamina;
@@ -204,5 +284,13 @@ public class PlayerController : MonoBehaviour
 
         HealthController.RestartHearts();
         StaminaBarController.ChangeStamina(currentStamina);
+    }
+
+    //On trigger enter test
+    private void OnTriggerEnter(Collider col) {
+        if (col.gameObject.name == "Death Zone") {
+            col.gameObject.transform.parent.SendMessage("GameOver");
+            GameOver();
+        }
     }
 }

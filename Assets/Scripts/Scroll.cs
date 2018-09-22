@@ -25,6 +25,7 @@ public class Scroll : MonoBehaviour {
     }
 
     void GameOver() {
-        this.transform.position = spawnPoint.transform.position;
+        Vector3 offset = new Vector3(0, 0, -10);
+        transform.position = spawnPoint.transform.position + offset;
     }
 }
