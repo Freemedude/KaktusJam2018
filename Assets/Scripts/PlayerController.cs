@@ -88,7 +88,7 @@ public class PlayerController : MonoBehaviour
 		var flapped = false;
 		if(jump && flapCooldownCounter < 0)
 		{
-			flapped = currentStamina < staminaDecreaseValue;
+			flapped = currentStamina > staminaDecreaseValue;
 			flapCooldownCounter = flapCooldown;
 		}
 
@@ -214,7 +214,7 @@ public class PlayerController : MonoBehaviour
 	/// If the player hits the ground, say we're not flying.
     /// </summary>
     /// <param name="col"></param>
-    void OnColliderEnter(Collider col)
+	void OnColliderEnter(Collider col)
     {
         if (col.tag == "Enemy")
             DecreaseHealth();
