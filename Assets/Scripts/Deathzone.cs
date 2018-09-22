@@ -22,6 +22,7 @@ public class Deathzone : MonoBehaviour {
             PlayerController player = col.gameObject.GetComponent<PlayerController>();
             player.DecreaseHealth();
             col.gameObject.transform.position = spawnPoint.transform.position;
+            gameObject.transform.parent.SendMessage("ResetPosition");
         }
     }
 }
