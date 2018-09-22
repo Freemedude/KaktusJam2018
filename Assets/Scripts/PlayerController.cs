@@ -122,6 +122,7 @@ public class PlayerController : MonoBehaviour {
     /// </summary>
     void SetIdleAnimation()
     {
+        // todo add holding animation!
         if (isHolding)
         {
             animator.SetBool("isIdle", true);
@@ -147,6 +148,7 @@ public class PlayerController : MonoBehaviour {
             animator.SetBool("isWalking", true);
             animator.SetBool("isFlying", false);
         }
+        // todo add holding animation!
         else
         {
             animator.SetBool("isIdle", false);
@@ -166,6 +168,7 @@ public class PlayerController : MonoBehaviour {
             animator.SetBool("isWalking", false);
             animator.SetBool("isFlying", true);
         }
+        // todo add holding animation!
         else
         {
             animator.SetBool("isIdle", false);
@@ -186,7 +189,6 @@ public class PlayerController : MonoBehaviour {
     /// If the player gets hit by an enemy, update the health.
 	/// If the player hits the ground, say we're not flying.
     /// </summary>
-    /// <param name="col"></param>
 	void OnColliderEnter(Collider col) {
         if (col.tag == "Enemy")
             DecreaseHealth();
