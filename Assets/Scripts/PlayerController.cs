@@ -222,7 +222,7 @@ public class PlayerController : MonoBehaviour {
     /// <summary>
     /// Decreases the health and check if the player is game over.
     /// </summary>
-    private void DecreaseHealth() {
+    public void DecreaseHealth() {
         currentHearts--;
 
         HealthController.UpdateHearts(currentHearts);
@@ -259,10 +259,7 @@ public class PlayerController : MonoBehaviour {
 
     //On trigger enter test
     private void OnTriggerEnter(Collider col) {
-        if (col.gameObject.name == "Death Zone") {
-            col.gameObject.transform.parent.SendMessage("GameOver");
-            GameOver();
-        } else if (col.gameObject.tag == "Mail") {
+        if (col.gameObject.tag == "Mail") {
             isHolding = true;
             Destroy(col.gameObject);
         }
