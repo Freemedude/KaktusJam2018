@@ -1,29 +1,10 @@
 ﻿using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
-    [Header("Player graphic settings")]
-    public bool startFacingRight;
-    public SpriteRenderer playerSpriteRenderer;
-
-    public Sprite playerSpriteIdleLeft;
-    public Sprite playerSpriteIdleRight;
-    public Sprite playerSpriteRunLeft;
-    public Sprite playerSpriteRunRight;
-    public Sprite playerSpriteFlyLeft;
-    public Sprite playerSpriteFlyRight;
-
-    public Sprite playerSpriteIdleLeftMail;
-    public Sprite playerSpriteIdleRightMail;
-    public Sprite playerSpriteRunLeftMail;
-    public Sprite playerSpriteRunRightMail;
-    public Sprite playerSpriteFlyLeftMail;
-    public Sprite playerSpriteFlyRightMail;
-
 
     [Header("Player movement settings")]
     public float flapCooldown;
     public float flapCooldownCounter = 0;
-
 
     public float movementSpeed;
     public float flapStrength;
@@ -33,6 +14,8 @@ public class PlayerController : MonoBehaviour {
     public GameObject spawnPoint;
     public HealthController HealthController;
     public StaminaBarController StaminaBarController;
+    private Animator animator;
+    private SpriteRenderer spriteRenderer;
     private int maxHearts = 3;
     private int currentHearts;
     private float maxStamina = 100;
@@ -58,11 +41,13 @@ public class PlayerController : MonoBehaviour {
     void Start() {
         // Get components
         rb = GetComponent<Rigidbody>();
+        animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+
+        facing = Facing.Right;
 
         // Default to idle spriterenderer
         UpdateState();
-
-        facing = startFacingRight ? Facing.Right : Facing.Left;
 
         currentHearts = maxHearts;
         HealthController.DrawHearts(currentHearts);
@@ -95,9 +80,11 @@ public class PlayerController : MonoBehaviour {
 
         if (hori < 0) {
             facing = Facing.Left;
+            spriteRenderer.flipX = true;
         }
         else if (hori > 0) {
             facing = Facing.Right;
+            spriteRenderer.flipX = false;
         }
 
         // If we're jumping
@@ -112,90 +99,78 @@ public class PlayerController : MonoBehaviour {
         UpdateStamina(flapped);
     }
 
-    public void UpdateState() {
+    public void UpdateState()
+    {
         // If we do not move, set sprite to idle with correct facing
-        if (!isMoving) {
-            //not holding anything
-            if (!isHolding) {
-                switch (facing) {
-                    case Facing.Left:
-                        SetSprite(playerSpriteIdleLeft);
-                        break;
-                    case Facing.Right:
-                        SetSprite(playerSpriteIdleRight);
-                        break;
-                }
-            //holding
-            } else {
-                switch (facing) {
-                    case Facing.Left:
-                        SetSprite(playerSpriteIdleLeftMail);
-                        break;
-                    case Facing.Right:
-                        SetSprite(playerSpriteIdleRightMail);
-                        break;
-                }
-            }
-        }
+        if (!isMoving)
+            SetIdleAnimation();
         // We are moving
-        else {
+        else
+        {
             // We are not flying
-            if (!isFlying) {
-                // We are not holding anything, so just set sprite to movement in correct direction
-                if (!isHolding) {
-                    switch (facing) {
-                        case Facing.Left:
-                            SetSprite(playerSpriteRunLeft);
-                            break;
-                        case Facing.Right:
-                            SetSprite(playerSpriteRunRight);
-                            break;
-                    }
-                }
-                // We are holding something, so set holding with correct direction
-                else {
-                    switch (facing) {
-                        case Facing.Left:
-                            SetSprite(playerSpriteRunLeftMail);
-                            break;
-                        case Facing.Right:
-                            SetSprite(playerSpriteRunRightMail);
-                            break;
-                    }
-                }
-
-            }
+            if (!isFlying)
+                SetWalkAnimation();
             // We are flying
-            else {
-                // We are not holding anything, so just set sprite to movement in correct direction
-                if (!isHolding) {
-                    switch (facing) {
-                        case Facing.Left:
-                            SetSprite(playerSpriteFlyLeft);
-                            break;
-                        case Facing.Right:
-                            SetSprite(playerSpriteFlyRight);
-                            break;
-                    }
-                }
-                // We are holding something and flying, set direction
-                else {
-                    switch (facing) {
-                        case Facing.Left:
-                            SetSprite(playerSpriteFlyLeftMail);
-                            break;
-                        case Facing.Right:
-                            SetSprite(playerSpriteFlyRightMail);
-                            break;
-                    }
-                }
-            }
-
+            else
+                SetFlyAnimation();
         }
     }
 
-    void SetSprite(Sprite sprite) {
-        playerSpriteRenderer.sprite = sprite;
+    /// <summary>
+    /// Sets animation to idle animation
+    /// </summary>
+    void SetIdleAnimation()
+    {
+        if (isHolding)
+        {
+            animator.SetBool("isIdle", true);
+            animator.SetBool("isWalking", false);
+            animator.SetBool("isFlying", false);
+        }
+        else
+        {
+            animator.SetBool("isIdle", true);
+            animator.SetBool("isWalking", false);
+            animator.SetBool("isFlying", false);
+        }
+    }
+
+    /// <summary>
+    /// Sets animation to walking animation
+    /// </summary>
+    void SetWalkAnimation()
+    {
+        if (isHolding)
+        {
+            animator.SetBool("isIdle", false);
+            animator.SetBool("isWalking", true);
+            animator.SetBool("isFlying", false);
+        }
+        else
+        {
+            animator.SetBool("isIdle", false);
+            animator.SetBool("isWalking", true);
+            animator.SetBool("isFlying", false);
+        }
+    }
+
+    /// <summary>
+    /// Sets animation to flying animation
+    /// </summary>
+    void SetFlyAnimation()
+    {
+        if (isHolding)
+        {
+            animator.SetBool("isIdle", false);
+            animator.SetBool("isWalking", false);
+            animator.SetBool("isFlying", true);
+        }
+        else
+        {
+            animator.SetBool("isIdle", false);
+            animator.SetBool("isWalking", false);
+            animator.SetBool("isFlying", true);
+        }
     }
 
     void Pause() {
