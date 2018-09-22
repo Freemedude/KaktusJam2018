@@ -262,15 +262,9 @@ public class PlayerController : MonoBehaviour {
 
     //On trigger enter test
     private void OnTriggerEnter(Collider col) {
-<<<<<<< HEAD
-        if (col.gameObject.name == "Death Zone") {
-            col.gameObject.transform.parent.SendMessage("GameOver");
-            GameOver();
-        } else if (col.gameObject.tag == "Mail") {
+        if (col.gameObject.tag == "Mail")
+        {
             sounds[0].Play(); //Yeah!
-=======
-        if (col.gameObject.tag == "Mail") {
->>>>>>> e867cdd6a2ea818f0297811658e48ce854e3ba89
             isHolding = true;
             Destroy(col.gameObject);
         }
