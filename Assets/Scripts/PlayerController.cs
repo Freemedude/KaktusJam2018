@@ -46,6 +46,7 @@ public class PlayerController : MonoBehaviour {
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+
         sounds = GetComponents<AudioSource>();
         facing = Facing.Right;
 
@@ -69,8 +70,8 @@ public class PlayerController : MonoBehaviour {
         flapCooldownCounter -= Time.deltaTime;
 
         var hori = Input.GetAxis("Horizontal");
+        var jump = Input.GetKeyDown("joystick 1 button 0");
         string[] controllers = Input.GetJoystickNames();
-        bool jump;
         if (controllers.Length == 0 || controllers[0] == "")
             jump = Input.GetKeyDown(KeyCode.Space);
         else
@@ -133,18 +134,23 @@ public class PlayerController : MonoBehaviour {
     /// </summary>
     void SetIdleAnimation()
     {
-        // todo add holding animation!
         if (isHolding)
         {
-            animator.SetBool("isIdle", true);
+            animator.SetBool("isIdle", false);
             animator.SetBool("isWalking", false);
             animator.SetBool("isFlying", false);
+            animator.SetBool("isIdleMail", true);
+            animator.SetBool("isWalkingMail", false);
+            animator.SetBool("isFlyingMail", false);
         }
         else
         {
             animator.SetBool("isIdle", true);
             animator.SetBool("isWalking", false);
             animator.SetBool("isFlying", false);
+            animator.SetBool("isIdleMail", false);
+            animator.SetBool("isWalkingMail", false);
+            animator.SetBool("isFlyingMail", false);
         }
     }
 
@@ -156,15 +162,20 @@ public class PlayerController : MonoBehaviour {
         if (isHolding)
         {
             animator.SetBool("isIdle", false);
-            animator.SetBool("isWalking", true);
+            animator.SetBool("isWalking", false);
             animator.SetBool("isFlying", false);
+            animator.SetBool("isIdleMail", false);
+            animator.SetBool("isWalkingMail", true);
+            animator.SetBool("isFlyingMail", false);
         }
-        // todo add holding animation!
         else
         {
             animator.SetBool("isIdle", false);
             animator.SetBool("isWalking", true);
             animator.SetBool("isFlying", false);
+            animator.SetBool("isIdleMail", false);
+            animator.SetBool("isWalkingMail", false);
+            animator.SetBool("isFlyingMail", false);
         }
     }
 
@@ -177,14 +188,19 @@ public class PlayerController : MonoBehaviour {
         {
             animator.SetBool("isIdle", false);
             animator.SetBool("isWalking", false);
-            animator.SetBool("isFlying", true);
+            animator.SetBool("isFlying", false);
+            animator.SetBool("isIdleMail", false);
+            animator.SetBool("isWalkingMail", false);
+            animator.SetBool("isFlyingMail", true);
         }
-        // todo add holding animation!
         else
         {
             animator.SetBool("isIdle", false);
             animator.SetBool("isWalking", false);
             animator.SetBool("isFlying", true);
+            animator.SetBool("isIdleMail", false);
+            animator.SetBool("isWalkingMail", false);
+            animator.SetBool("isFlyingMail", false);
         }
     }
 
@@ -261,6 +277,8 @@ public class PlayerController : MonoBehaviour {
 
     //On trigger enter test
     private void OnTriggerEnter(Collider col) {
+    
+
         if (col.gameObject.tag == "Mail")
         {
             sounds[0].Play(); //Yeah!
