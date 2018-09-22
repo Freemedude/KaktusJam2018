@@ -13,8 +13,8 @@ public class PlayerController : MonoBehaviour {
     public float mailToDeliver = 3; //Change this to the number of mailboxes to deliver
 
     public GameObject spawnPoint;
-    public HealthController HealthController;
-    public StaminaBarController StaminaBarController;
+    private HealthController HealthController;
+    private StaminaBarController StaminaBarController;
     private Animator animator;
     private SpriteRenderer spriteRenderer;
     private int maxHearts = 3;
@@ -50,6 +50,9 @@ public class PlayerController : MonoBehaviour {
         // Default to idle spriterenderer
         UpdateState();
 
+        // get the health controller and stamina controller in the scene
+        HealthController = FindObjectOfType<HealthController>();
+        StaminaBarController = FindObjectOfType<StaminaBarController>();
         currentHearts = maxHearts;
         HealthController.DrawHearts(currentHearts);
         currentStamina = maxStamina;
