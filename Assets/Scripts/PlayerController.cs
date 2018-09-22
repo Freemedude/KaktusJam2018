@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour {
     public float flapStrength;
     private Rigidbody rb;
     private bool paused = false;
+    public float mailToDeliver = 3; //Change this to the number of mailboxes to deliver
 
     public GameObject spawnPoint;
     public HealthController HealthController;
@@ -262,7 +263,10 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    private void DropObject() {
+    private void MailDelivered() {
         isHolding = false;
+        if(--mailToDeliver <= 0) {
+            //winState();
+        }
     }
 }
