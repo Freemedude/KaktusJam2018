@@ -67,7 +67,8 @@ public class PlayerController : MonoBehaviour {
         flapCooldownCounter -= Time.deltaTime;
 
         var hori = Input.GetAxis("Horizontal");
-        var jump = Input.GetKeyDown("joystick 1 button 0");
+        string[] controllers = Input.GetJoystickNames();
+        bool jump = controllers[0] == "" ? Input.GetKeyDown(KeyCode.Space) : Input.GetKeyDown("joystick 1 button 0");
 
         isMoving = (hori != 0f || isFlying);
 
