@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: eaef0735d611f4cf4b9a3be8f0ce6611
+guid: d72b54f3a44744cb4b9b327ceadb9f2e
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -8,9 +8,9 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontName: Pixel-Art
+  fontName: Star Jedi
   fontNames:
-  - Pixel-Art
+  - Star Jedi
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
