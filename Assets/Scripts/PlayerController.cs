@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour {
     private float staminaIncreaseValue = 1.5f;
     private float currentStamina;
     private AudioSource[] sounds;
+    public Camera mainCamera;
 
 
     /*** State management ***/
@@ -69,7 +70,11 @@ public class PlayerController : MonoBehaviour {
 
         var hori = Input.GetAxis("Horizontal");
         string[] controllers = Input.GetJoystickNames();
-        bool jump = controllers[0] == "" ? Input.GetKeyDown(KeyCode.Space) : Input.GetKeyDown("joystick 1 button 0");
+        bool jump;
+        if (controllers.Length == 0 || controllers[0] == "")
+            jump = Input.GetKeyDown(KeyCode.Space);
+        else
+            jump = Input.GetKeyDown("joystick 1 button 0");
 
         isMoving = (hori != 0f || isFlying);
 
