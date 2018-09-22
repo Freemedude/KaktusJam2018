@@ -14,7 +14,7 @@ public class Deathzone : MonoBehaviour {
 		
 	}
 
-    void OnTriggerEnter(Collider col) {
+    private void OnTriggerEnter(Collider col) {
         if (col.gameObject.name == "Player") {
             collided = true;
             col.gameObject.SendMessage("GameOver");
