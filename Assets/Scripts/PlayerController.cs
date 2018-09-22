@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour {
 
     public float movementSpeed;
     public float flapStrength;
-    private Rigidbody rb;
+    private Rigidbody2D rb;
     private bool paused = false;
     public float mailToDeliver = 3; //Change this to the number of mailboxes to deliver
 
@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour {
     // Use this for initialization
     void Start() {
         // Get components
-        rb = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
 
@@ -216,7 +216,7 @@ public class PlayerController : MonoBehaviour {
 	/// If the player hits the ground, say we're not flying.
 	/// If the player gets hit by an enemy, decrease health.
     /// </summary>
-	private void OnCollisionEnter(Collision col) {
+	private void OnCollisionEnter2D(Collision2D col) {
 
         if (col.gameObject.tag == "Ground")
         {
@@ -231,7 +231,7 @@ public class PlayerController : MonoBehaviour {
     /// <summary>
     /// If the player leaves ground, say we are flying
     /// </summary>
-	private void OnCollisionExit(Collision other) {
+	private void OnCollisionExit2D(Collision2D other) {
         if (other.gameObject.tag == "Ground") {
             isFlying = true;
         }
@@ -276,7 +276,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     //On trigger enter test
-    private void OnTriggerEnter(Collider col) {
+    private void OnTriggerEnter2D(Collider2D col) {
     
 
         if (col.gameObject.tag == "Mail")

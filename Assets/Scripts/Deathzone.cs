@@ -16,7 +16,7 @@ public class Deathzone : MonoBehaviour {
 	}
 
 
-    private void OnTriggerEnter(Collider col) {
+    private void OnTriggerEnter2D(Collider2D col) {
         if (col.gameObject.tag == "Player") {
             collided = true;
             PlayerController player = col.gameObject.GetComponent<PlayerController>();
