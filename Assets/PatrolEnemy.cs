@@ -11,20 +11,26 @@ public class PatrolEnemy : MonoBehaviour
 	public Transform point1;
 	public Transform point2;
 
+	private Vector3 p1;
+	private Vector3 p2;
 
-	// The two points we're currently targeting
-	private Transform currentDestination;
+
+	// The point we're currently targeting
+	private Vector3 currentDestination;
 
 	// Movementspeed per seccond
 	public float movementSpeed;
 
 	private void Start()
 	{
+		p1 = point1.position;
+		p2 = point2.position;
+
 		// Get SpriteRenderer
 		spriteRenderer = GetComponent<SpriteRenderer>();
 
 		// Set initial target
-		currentDestination = point1;
+		currentDestination = p1;
 	}
 
 	// Update is called once per frame
@@ -34,7 +40,7 @@ public class PatrolEnemy : MonoBehaviour
 		var moveDist = movementSpeed * Time.deltaTime;
 		
 		// x value we have to move
-		var xDiff = currentDestination.position.x - transform.position.x;
+		var xDiff = currentDestination.x - transform.position.x;
 
 		// Distance left to move
 		var remainingDist = Mathf.Abs(xDiff);
@@ -76,6 +82,6 @@ public class PatrolEnemy : MonoBehaviour
 	// Get the next destination
 	void GetNextDestination()
 	{
-		currentDestination = currentDestination == point1 ? point2 : point1;
+		currentDestination = currentDestination == p1 ? p2 : p1;
 	}
 }
