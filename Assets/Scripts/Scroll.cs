@@ -5,6 +5,7 @@ using UnityEngine;
 public class Scroll : MonoBehaviour {
 
     public float scrollSpeed= .005f;
+    public GameObject spawnPoint;
     // Use this for initialization
     void Start () {
 		
@@ -21,5 +22,9 @@ public class Scroll : MonoBehaviour {
 
     void Unpause() {
         scrollSpeed = 0.005f;
+    }
+
+    void GameOver() {
+        this.transform.position = spawnPoint.transform.position;
     }
 }
