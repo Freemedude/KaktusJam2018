@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Scroll : MonoBehaviour {
 
-    public float scrollSpeed= .005f;
+    public float scrollSpeed= .5f;
     public GameObject spawnPoint;
     // Use this for initialization
     void Start () {
@@ -13,7 +13,7 @@ public class Scroll : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        transform.position = transform.position + Vector3.up * scrollSpeed;
+        transform.position = transform.position + Vector3.up * scrollSpeed * Time.deltaTime;
 	}
 
     void Pause() {

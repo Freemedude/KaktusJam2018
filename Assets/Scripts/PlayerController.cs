@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour {
 
@@ -27,7 +29,7 @@ public class PlayerController : MonoBehaviour {
     private float currentStamina;
     private AudioSource[] sounds;
     public Camera mainCamera;
-
+    private bool gameOver = false;
 
     /*** State management ***/
 
@@ -42,6 +44,7 @@ public class PlayerController : MonoBehaviour {
 
     // Use this for initialization
     void Start() {
+        Time.timeScale = 1;
         // Get components
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
@@ -110,6 +113,12 @@ public class PlayerController : MonoBehaviour {
 
         UpdateState();
         UpdateStamina(flapped);
+
+        if (gameOver) {
+            if (Input.GetKeyDown(KeyCode.Return)) {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
+        }
     }
 
     public void UpdateState()
@@ -247,6 +256,10 @@ public class PlayerController : MonoBehaviour {
 
         if (currentHearts <= 0)
             GameOver();
+        else {
+            //isHolding = false;
+            this.transform.position = spawnPoint.transform.position;
+        }
     }
 
     /// <summary>
@@ -266,13 +279,9 @@ public class PlayerController : MonoBehaviour {
     /// When the player is game over, he spawns at the checkpoint.
     /// </summary>
     void GameOver() {
-        isHolding = false;
-        this.transform.position = spawnPoint.transform.position;
-        currentHearts = maxHearts;
-        currentStamina = maxStamina;
-
-        HealthController.RestartHearts();
-        StaminaBarController.ChangeStamina(currentStamina);
+        Time.timeScale = 0;
+        mainCamera.transform.GetChild(4).gameObject.SetActive(true); //turns lose screen on
+        gameOver = true;
     }
 
     //On trigger enter test
@@ -290,7 +299,9 @@ public class PlayerController : MonoBehaviour {
     private void MailDelivered() {
         isHolding = false;
         if(--mailToDeliver <= 0) {
-            //winState();
+            mainCamera.transform.GetChild(3).gameObject.SetActive(true); //Sets win screen true
+            Time.timeScale = 0;
+            gameOver = true;
         }
     }
 }
