@@ -88,7 +88,7 @@ public class PlayerController : MonoBehaviour
 		var flapped = false;
 		if(jump && flapCooldownCounter < 0)
 		{
-			flapped = jump;
+			flapped = currentStamina < staminaDecreaseValue;
 			flapCooldownCounter = flapCooldown;
 		}
 
@@ -266,7 +266,7 @@ public class PlayerController : MonoBehaviour
     {
         if (jumping)
             currentStamina -= staminaDecreaseValue;
-        else if (currentStamina < maxStamina)
+        else if (currentStamina < maxStamina && !isFlying)
             currentStamina += staminaIncreaseValue;
 
         float percentage = currentStamina / maxStamina;
