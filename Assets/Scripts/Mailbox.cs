@@ -10,6 +10,7 @@ public class Mailbox : MonoBehaviour {
     private Component dialogueTriggerScript;
     public bool firstCollision = true;
     public bool inDialogue = false;
+    public Sprite mailInBox;
 	// Use this for initialization
 	void Start () {
         //spawnpoint = GameObject.Find("SpawnPoint");
@@ -34,7 +35,8 @@ public class Mailbox : MonoBehaviour {
 
     void OnCollisionEnter(Collision col) {
         if (firstCollision && player.isHolding) {
-            
+
+            this.GetComponent<SpriteRenderer>().sprite = mailInBox;
             dialogueTriggerScript.SendMessage("TriggerDialogue");
             movePlayerSpawnPoint();
             Pause();
