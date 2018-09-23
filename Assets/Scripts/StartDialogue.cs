@@ -11,12 +11,13 @@ public class StartDialogue : MonoBehaviour
 
     DialogueManager dialogueManager;
 
-    public SwanobiController swanobiController;
+    public GameObject swanobi;
     private bool sentMessages;
 
     public void StartStory()
     {
         sentMessages = false;
+        swanobi.SetActive(true);
         if(dialogueManager == null)
         {
             var go = GameObject.Find("DialogueManager");
@@ -60,8 +61,7 @@ public class StartDialogue : MonoBehaviour
 
         if(sentMessages && !dialogueManager.dialogueActive)
         {
-            swanobiController.WalkOut();
-            swanobiController.shouldWalk = true;
+            Destroy(swanobi);
             hasFinished = true;
         }
         
