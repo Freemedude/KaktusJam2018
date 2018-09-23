@@ -7,16 +7,26 @@ public class StartDialogue : MonoBehaviour
     public DialogueTrigger[] swanobiDialogue;
     private int swanobiDialogueIndex = 0;
 
+    public bool hasFinished = false;
+
+    DialogueManager dialogueManager;
+
     public SwanobiController swanobiController;
+    private bool sentMessages;
 
     public void StartStory()
     {
+        sentMessages = false;
+        if(dialogueManager == null)
+        {
+            var go = GameObject.Find("DialogueManager");
+            dialogueManager = go.GetComponent<DialogueManager>();
+        }
+
         PlayerTalk();
         
         SwanobiTalk();
 
-        swanobiController.MoveToPoint1();
-
         PlayerTalk();
 
         SwanobiTalk();
@@ -29,19 +39,35 @@ public class StartDialogue : MonoBehaviour
 
         SwanobiTalk();
 
-        swanobiController.MoveToPoint2();
+        sentMessages = true;
+    }
+
+    private void Update()
+    {
+        if(dialogueManager == null)
+        {
+            var go = GameObject.Find("DialogueManager");
+            dialogueManager = go.GetComponent<DialogueManager>();
+        }
+
+        if(sentMessages && !dialogueManager.dialogueActive)
+        {
+            swanobiController.WalkOut();
+            swanobiController.shouldWalk = true;
+            hasFinished = true;
+        }
+        
     }
 
     private void PlayerTalk()
     {
-        playerDialogue[playerDialogueIndex++].SendMessage("TriggerMessage");
+        playerDialogue[playerDialogueIndex++].SendMessage("TriggerDialogue");
 
     }
 
     private void SwanobiTalk()
     {
-        swanobiDialogue[swanobiDialogueIndex++].SendMessage("TriggerMessage");
-
+        swanobiDialogue[swanobiDialogueIndex++].SendMessage("TriggerDialogue");
     }
     
 }

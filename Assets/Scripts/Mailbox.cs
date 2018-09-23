@@ -24,7 +24,7 @@ public class Mailbox : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         if(inDialogue) {
-            if(!dialogueManager.dialogueIsOpen) {
+            if(!dialogueManager.dialogueActive) {
                 inDialogue = false;
                 Unpause();
             }

@@ -1,15 +1,15 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class SwanobiController : MonoBehaviour 
 {
-	public Transform point1;
-	public Transform point2;
+	public Transform outsideScreenTransform;
 
-	private Vector3 p1;
-	private Vector3 p2;
+	private Vector3 outsideScreenPoint;
 
+	public bool shouldWalk;
 
 	// The point we're currently targeting
 	private Vector3 currentDestination;
@@ -19,49 +19,49 @@ public class SwanobiController : MonoBehaviour
 
 	private void Start()
 	{
-		transform.position = p2;
-		p1 = point1.position;
-		p2 = point2.position;
+		outsideScreenPoint = outsideScreenTransform.position;
 	}
 
-	public void MoveToPoint1()
-	{
-		StartCoroutine("MoveToPoint", p1);
-	}
+    internal void WalkOut()
+    {
+		currentDestination = outsideScreenPoint;
 
-	public void MoveToPoint2()
-	{
-		StartCoroutine("MoveToPoint", p2);
-	}
+    }
 
-	private IEnumerable MoveToPoint(Vector3 dest)
+    private void Update()
 	{
-		while(true)
+		if(!shouldWalk)
 		{
-		
-		// Distance we can move this frame
-			var moveDist = movementSpeed * Time.deltaTime;
-			
-			// x value we have to move
-			var xDiff = currentDestination.x - transform.position.x;
-
-			// Distance left to move
-			var remainingDist = Mathf.Abs(xDiff);
-
-				// Move the desired distance
-			var direction = new Vector2(
-				xDiff,
-				0);
-			if(moveDist > remainingDist)
-			{
-				transform.Translate (direction);
-				break;
-			}
-			else
-			{
-				transform.Translate(direction.normalized * movementSpeed * Time.deltaTime);
-			}
-			yield return null;
+			return;
 		}
+
+		// Distance we can move this frame
+		var moveDist = movementSpeed * Time.deltaTime;
+		
+		// x value we have to move
+		var xDiff = currentDestination.x - transform.position.x;
+
+		// Distance left to move
+		var remainingDist = Mathf.Abs(xDiff);
+		
+		var vectorToPoint = new Vector2(
+			xDiff,
+			0
+		);
+
+		// If we are close enough to overshoot the target
+		if(moveDist > remainingDist)
+		{			
+			// Put us at target dest and get next target
+			transform.Translate (vectorToPoint);
+			shouldWalk = false;
+		}
+
+		else
+		{
+			// Move the desired distance
+			transform.Translate(vectorToPoint.normalized * movementSpeed * Time.deltaTime);
+		}
+		
 	}
 }

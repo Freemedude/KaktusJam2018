@@ -30,9 +30,7 @@ public class PlayerController : MonoBehaviour {
 
     public StartDialogue startDialogue;
 
-
     /*** Dialogue management ***/
-    private DialogueTrigger dialogueTrigger;
     public DialogueManager dialogueManager;
 
     /*** State management ***/
@@ -43,7 +41,6 @@ public class PlayerController : MonoBehaviour {
         Left, Right
     }
     public Facing facing;
-
     public bool hasWon;
     public Collider2D deathCollider;
 
@@ -53,7 +50,6 @@ public class PlayerController : MonoBehaviour {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        dialogueTrigger = GetComponent<DialogueTrigger>();
 
         sounds = GetComponents<AudioSource>();
         facing = Facing.Right;
@@ -70,13 +66,13 @@ public class PlayerController : MonoBehaviour {
 
         Pause_All();
         
-        dialogueTrigger.SendMessage("TriggerDialogue");
+        startDialogue.StartStory();
     }
 
     // Update is called once per frame
     void Update() {
         if (paused) {
-            if(!dialogueManager.dialogueIsOpen)
+            if(!dialogueManager.dialogueActive && startDialogue.hasFinished)
             {
                 Unpause_All();
             }
