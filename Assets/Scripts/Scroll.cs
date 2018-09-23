@@ -21,7 +21,7 @@ public class Scroll : MonoBehaviour {
     }
 
     void Unpause() {
-        scrollSpeed = 0.005f;
+        scrollSpeed = 0.5f;
     }
 
     void ResetPosition() {
