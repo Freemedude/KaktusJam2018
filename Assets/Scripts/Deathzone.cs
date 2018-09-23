@@ -20,7 +20,7 @@ public class Deathzone : MonoBehaviour {
         if (col.gameObject.tag == "Player") {
             collided = true;
             PlayerController player = col.gameObject.GetComponent<PlayerController>();
-            //player.DecreaseHealth();
+            player.DecreaseHealth();
             col.gameObject.transform.position = spawnPoint.transform.position;
             gameObject.transform.parent.SendMessage("ResetPosition");
         }
