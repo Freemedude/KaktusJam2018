@@ -327,9 +327,15 @@ public class PlayerController : MonoBehaviour {
     /// When the player is game over, he spawns at the checkpoint.
     /// </summary>
     void GameOver() {
-        Time.timeScale = 0;
-        mainCamera.transform.GetChild(4).gameObject.SetActive(true); //turns lose screen on
+        mainCamera.transform.GetChild(3).gameObject.SetActive(true); //turns lose screen on
+        mainCamera.SendMessage("Pause");
+        StartCoroutine(Wait(4));
+    }
+
+    IEnumerator Wait(float x) {
+        yield return new WaitForSeconds(x);
         gameOver = true;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     //On trigger enter test
