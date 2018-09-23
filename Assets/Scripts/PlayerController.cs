@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour {
 
@@ -12,7 +13,6 @@ public class PlayerController : MonoBehaviour {
     public float flapStrength;
     private Rigidbody2D rb;
     private bool paused = false;
-    public float mailToDeliver = 3; //Change this to the number of mailboxes to deliver
     
     public GameObject spawnPoint;
     private HealthController HealthController;
@@ -29,12 +29,10 @@ public class PlayerController : MonoBehaviour {
     private float currentStamina;
     private AudioSource[] sounds;
     public Camera mainCamera;
-<<<<<<< HEAD
     private bool gameOver = false;
-=======
 
     public StartDialogue startDialogue;
->>>>>>> ad787b94879d7adc81792ad51dd15c2277752de1
+    public Image fade;
 
 
     /*** Dialogue management ***/
@@ -74,6 +72,7 @@ public class PlayerController : MonoBehaviour {
         currentHearts = maxHearts;
         HealthController.DrawHearts(currentHearts);
         currentStamina = maxStamina;
+        fade.CrossFadeAlpha(0, .0f, true);
 
         Pause_All();
         
@@ -88,6 +87,7 @@ public class PlayerController : MonoBehaviour {
                 Unpause_All();
             }
             rb.isKinematic = true;
+            rb.velocity = new Vector3 (0,0,0);
             return;
         }
         
@@ -337,9 +337,11 @@ public class PlayerController : MonoBehaviour {
     {
     
 
-        if(col.tag == "WinZone")
+        if(col.gameObject.tag == "WinZone")
         {
-            hasWon = true;
+            Time.timeScale = .25f;
+            fade.CrossFadeAlpha(1, 4.0f, true);
+            gameOver = true;
             Pause();
         }
 
@@ -353,11 +355,6 @@ public class PlayerController : MonoBehaviour {
 
     private void MailDelivered() {
         isHolding = false;
-        if(--mailToDeliver <= 0) {
-            mainCamera.transform.GetChild(3).gameObject.SetActive(true); //Sets win screen true
-            Time.timeScale = 0;
-            gameOver = true;
-        }
     }
 
 }
