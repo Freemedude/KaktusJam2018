@@ -41,7 +41,7 @@ Dear Father,
   
 I know I haven't written in a long time. We both miss you and hope you're doing well.
 
-There's something you need to know. Mom is getting ill. Like very ill. And I'm not sure if she going to be alright on her own.
+There's something you need to know. Mom is getting ill. Very ill. And I'm not sure if she going to be alright on her own.
 
 Is it possible for you to get on a shuttle home soon?
 
@@ -60,9 +60,9 @@ I know you must have a reason for not responding to my last letter. Mom is getti
 
 I don't know what that means, but I know that it does not seem good. 
 
-You must be very busy, but please come home!
+Mom always said you were nothing but a scruffy nerf herder, please don't prove her right.
 
-Help us dad, you're her only hope.
+
 
 Falco
 
@@ -76,12 +76,12 @@ Dear Father,
 
 Mother is dying.
 
-The disease has taken her arms and legs and both her lungs.
+The disease has taken her wings, her legs, and her left lung.
 Life support wont keep her here forever.
 
-Mother told me to find you, but she needs me here now while she's so weak, so I don't dare leaving her for long.
+Mother told me to find you, but she needs me here now while she's so weak, so I don't dare leave her for long.
 
-Get back here you nerf herder.
+Don't make me do this alone dad, you're our only hope.
 
 Falco
 
