@@ -24,9 +24,9 @@ GameObject:
   - component: {fileID: 95270235951591382}
   - component: {fileID: 82744015438589440}
   - component: {fileID: 82954127331497150}
-  - component: {fileID: 50290234142126674}
   - component: {fileID: 114977216937360022}
   - component: {fileID: 61864116753501072}
+  - component: {fileID: 50799264381962336}
   m_Layer: 0
   m_Name: BirdPlayer
   m_TagString: Player
@@ -41,13 +41,13 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1660447777466166}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.2, y: -1.841, z: 0}
+  m_LocalPosition: {x: 0.2, y: -2.43, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &50290234142126674
+--- !u!50 &50799264381962336
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 1
@@ -314,6 +314,7 @@ MonoBehaviour:
   flapCooldown: 0
   movementSpeed: 10
   flapStrength: 95
+  gameOverScreen: {fileID: 0}
   spawnPoint: {fileID: 0}
   staminaDecreaseValue: 5
   staminaIncreaseValue: 2.5
