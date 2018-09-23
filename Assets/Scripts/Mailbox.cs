@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Mailbox : MonoBehaviour {
 
@@ -10,6 +8,7 @@ public class Mailbox : MonoBehaviour {
     private Component dialogueTriggerScript;
     public bool firstCollision = true;
     public bool inDialogue = false;
+    public Sprite mailInBox;
 	// Use this for initialization
 	void Start () {
         //spawnpoint = GameObject.Find("SpawnPoint");
@@ -32,9 +31,10 @@ public class Mailbox : MonoBehaviour {
         }
 	}
 
-    void OnCollisionEnter(Collision col) {
+    void OnCollisionEnter2D(Collision2D col) {
         if (firstCollision && player.isHolding) {
-            
+
+            this.GetComponent<SpriteRenderer>().sprite = mailInBox;
             dialogueTriggerScript.SendMessage("TriggerDialogue");
             movePlayerSpawnPoint();
             Pause();

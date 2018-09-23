@@ -7,12 +7,6 @@ public class HealthController : MonoBehaviour
     public GameObject HeartPrefab;
     private List<GameObject> hearts = new List<GameObject>();
 
-    //private void Awake()
-    //{
-    //    var placeholderHeart = transform.Find("Heart_Placeholder");
-    //    placeholderHeart.gameObject.SetActive(false);
-    //}
-
     /// <summary>
     /// Draws the hearts at the start of the game.
     /// </summary>

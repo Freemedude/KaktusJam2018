@@ -6,14 +6,14 @@ public class PlayerController : MonoBehaviour {
 
     [Header("Player movement settings")]
     public float flapCooldown;
-    public float flapCooldownCounter = 0;
+    private float flapCooldownCounter = 0;
 
     public float movementSpeed;
     public float flapStrength;
-    private Rigidbody rb;
+    private Rigidbody2D rb;
     private bool paused = false;
     public float mailToDeliver = 3; //Change this to the number of mailboxes to deliver
-
+    
     public GameObject spawnPoint;
     private HealthController HealthController;
     private StaminaBarController StaminaBarController;
@@ -29,10 +29,19 @@ public class PlayerController : MonoBehaviour {
     private float currentStamina;
     private AudioSource[] sounds;
     public Camera mainCamera;
+<<<<<<< HEAD
     private bool gameOver = false;
+=======
+
+    public StartDialogue startDialogue;
+>>>>>>> ad787b94879d7adc81792ad51dd15c2277752de1
+
+
+    /*** Dialogue management ***/
+    private DialogueTrigger dialogueTrigger;
+    public DialogueManager dialogueManager;
 
     /*** State management ***/
-
     public bool isFlying;
     public bool isHolding;
     public bool isMoving;
@@ -41,14 +50,17 @@ public class PlayerController : MonoBehaviour {
     }
     public Facing facing;
 
+    public bool hasWon;
+    public Collider2D deathCollider;
 
     // Use this for initialization
     void Start() {
         Time.timeScale = 1;
         // Get components
-        rb = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        dialogueTrigger = GetComponent<DialogueTrigger>();
 
         sounds = GetComponents<AudioSource>();
         facing = Facing.Right;
@@ -62,13 +74,24 @@ public class PlayerController : MonoBehaviour {
         currentHearts = maxHearts;
         HealthController.DrawHearts(currentHearts);
         currentStamina = maxStamina;
+
+        Pause_All();
+        
+        dialogueTrigger.SendMessage("TriggerDialogue");
     }
 
     // Update is called once per frame
     void Update() {
         if (paused) {
+            if(!dialogueManager.dialogueIsOpen)
+            {
+                Unpause_All();
+            }
+            rb.isKinematic = true;
             return;
         }
+        
+        rb.isKinematic = false;
 
         flapCooldownCounter -= Time.deltaTime;
 
@@ -213,6 +236,31 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
+    
+    // Pauses all pausable gameobjects
+    void Pause_All() 
+    {
+        Pause();
+        var gos = GameObject.FindGameObjectsWithTag("Enemy");
+        mainCamera.SendMessage("Pause");
+        for (var i = 0; i < gos.Length; i++) {
+            gos[i].SendMessage("Pause");
+        }
+    }
+
+
+    // Unpauses all pausable gameobjects
+    void Unpause_All() 
+    {
+        Unpause();
+        var gos = GameObject.FindGameObjectsWithTag("Enemy");
+        mainCamera.SendMessage("Unpause");
+        for (var i = 0; i < gos.Length; i++) {
+            gos[i].SendMessage("Unpause");
+        }
+    }
+
+
     void Pause() {
         paused = true;
     }
@@ -225,7 +273,7 @@ public class PlayerController : MonoBehaviour {
 	/// If the player hits the ground, say we're not flying.
 	/// If the player gets hit by an enemy, decrease health.
     /// </summary>
-	private void OnCollisionEnter(Collision col) {
+	private void OnCollisionEnter2D(Collision2D col) {
 
         if (col.gameObject.tag == "Ground")
         {
@@ -240,8 +288,8 @@ public class PlayerController : MonoBehaviour {
     /// <summary>
     /// If the player leaves ground, say we are flying
     /// </summary>
-	private void OnCollisionExit(Collision other) {
-        if (other.gameObject.tag == "Ground") {
+	private void OnCollisionExit2D(Collision2D other) {
+        if (other.gameObject.tag == "Ground" || other.gameObject.tag == "MailBox") {
             isFlying = true;
         }
     }
@@ -285,8 +333,15 @@ public class PlayerController : MonoBehaviour {
     }
 
     //On trigger enter test
-    private void OnTriggerEnter(Collider col) {
+    private void OnTriggerEnter2D(Collider2D col) 
+    {
     
+
+        if(col.tag == "WinZone")
+        {
+            hasWon = true;
+            Pause();
+        }
 
         if (col.gameObject.tag == "Mail")
         {
@@ -304,4 +359,5 @@ public class PlayerController : MonoBehaviour {
             gameOver = true;
         }
     }
+
 }

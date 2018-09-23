@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114513482177398636}
   - component: {fileID: 65758051510931068}
   m_Layer: 0
-  m_Name: MailBox
+  m_Name: Mailbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -72,6 +72,7 @@ MonoBehaviour:
   dialogueManager: {fileID: 0}
   firstCollision: 1
   inDialogue: 0
+  mailInBox: {fileID: 0}
 --- !u!114 &114513482177398636
 MonoBehaviour:
   m_ObjectHideFlags: 1

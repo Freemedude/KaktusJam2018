@@ -11,17 +11,11 @@ public class DialogueManager : MonoBehaviour
 
     public Animator animator;
 
-    private Queue<string> sentences;
-
-    // Use this for initialization
-    void Start()
-    {
-        sentences = new Queue<string>();
-
-    }
+    private Queue<string> sentences = new Queue<string>();
 
     public void StartDialogue(Dialogue dialogue)
     {
+        
         animator.SetBool("IsOpen", true);
         nameText.text = dialogue.name;
         dialogueIsOpen = true;
