@@ -1,12 +1,12 @@
 fileFormatVersion: 2
-guid: 02a8328d3d2f3b340831e7684df2ede8
+guid: eecb85955c6af984c81345ac15bc9e90
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Bird_Walking_0
-    21300002: Bird_Walking_1
-    21300004: Bird_Walking_2
-    21300006: Bird_Walking_3
-    21300008: Bird_Walking_4
+    21300000: Bird_Flying_Animation_0
+    21300002: Bird_Flying_Animation_1
+    21300004: Bird_Flying_Animation_2
+    21300006: Bird_Flying_Animation_3
+    21300008: Bird_Flying_Animation_4
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -111,13 +111,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Bird_Walking_0
+      name: Bird_Flying_Animation_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 95
-        height: 195
+        width: 219
+        height: 183
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -125,19 +125,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3688bead03f4a34438c02e4cde417a3d
+      spriteID: 9b021237b3bc3b241ac9b10ab93c420d
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bird_Walking_1
+      name: Bird_Flying_Animation_1
       rect:
         serializedVersion: 2
-        x: 95
-        y: 2
-        width: 117
-        height: 193
+        x: 219
+        y: 7
+        width: 238
+        height: 176
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,19 +145,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0fe312479e40b3341b9077858ede15b3
+      spriteID: 611609cac271d5a4ea25e5b5db4047f7
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bird_Walking_2
+      name: Bird_Flying_Animation_2
       rect:
         serializedVersion: 2
-        x: 212
-        y: 8
-        width: 115
-        height: 187
+        x: 458
+        y: 14
+        width: 230
+        height: 169
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -165,19 +165,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 636c8c22b5da11744bd674d0077436e0
+      spriteID: 90ed6bf428cb6254987287d199586ec3
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bird_Walking_3
+      name: Bird_Flying_Animation_3
       rect:
         serializedVersion: 2
-        x: 327
-        y: 1
-        width: 99
-        height: 194
+        x: 688
+        y: 11
+        width: 189
+        height: 172
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -185,19 +185,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 137ad404224c6d34d81440bfd4278539
+      spriteID: 89db0b8c545cbe645a2909069c51e0b0
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bird_Walking_4
+      name: Bird_Flying_Animation_4
       rect:
         serializedVersion: 2
-        x: 426
-        y: 1
-        width: 95
-        height: 194
+        x: 877
+        y: 9
+        width: 244
+        height: 174
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -205,7 +205,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0cdd11e1cc49dee40a45426f877300b4
+      spriteID: ddd4a8beacb351b4f8ba197741733b3e
       vertices: []
       indices: 
       edges: []
@@ -213,7 +213,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 4fe2a23d5e8febd4a8ea2ea8ec8c944c
+    spriteID: 974b7a78ceef2884f94519c169f1e329
     vertices: []
     indices: 
     edges: []

@@ -58,7 +58,7 @@ public class PlayerController : MonoBehaviour {
         spriteRenderer = GetComponent<SpriteRenderer>();
 
         sounds = GetComponents<AudioSource>();
-        facing = Facing.Right;
+        facing = Facing.Left;
 
         // Default to idle spriterenderer
         UpdateState();
@@ -116,11 +116,11 @@ public class PlayerController : MonoBehaviour {
 
         if (hori < 0) {
             facing = Facing.Left;
-            spriteRenderer.flipX = true;
+            spriteRenderer.flipX = false;
         }
         else if (hori > 0) {
             facing = Facing.Right;
-            spriteRenderer.flipX = false;
+            spriteRenderer.flipX = true;
         }
 
         // If we're jumping
