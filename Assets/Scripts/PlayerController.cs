@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour {
 
@@ -10,7 +13,6 @@ public class PlayerController : MonoBehaviour {
     public float flapStrength;
     private Rigidbody2D rb;
     private bool paused = false;
-    public float mailToDeliver = 3; //Change this to the number of mailboxes to deliver
     
     public GameObject spawnPoint;
     private HealthController HealthController;
@@ -27,8 +29,10 @@ public class PlayerController : MonoBehaviour {
     private float currentStamina;
     private AudioSource[] sounds;
     public Camera mainCamera;
+    private bool gameOver = false;
 
     public StartDialogue startDialogue;
+    public Image fade;
 
     /*** Dialogue management ***/
     public DialogueManager dialogueManager;
@@ -46,6 +50,7 @@ public class PlayerController : MonoBehaviour {
 
     // Use this for initialization
     void Start() {
+        Time.timeScale = 1;
         // Get components
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
@@ -63,6 +68,7 @@ public class PlayerController : MonoBehaviour {
         currentHearts = maxHearts;
         HealthController.DrawHearts(currentHearts);
         currentStamina = maxStamina;
+        fade.CrossFadeAlpha(0, .0f, true);
 
         Pause_All();
         
@@ -77,6 +83,7 @@ public class PlayerController : MonoBehaviour {
                 Unpause_All();
             }
             rb.isKinematic = true;
+            rb.velocity = new Vector3 (0,0,0);
             return;
         }
         
@@ -125,6 +132,12 @@ public class PlayerController : MonoBehaviour {
 
         UpdateState();
         UpdateStamina(flapped);
+
+        if (gameOver) {
+            if (Input.GetKeyDown(KeyCode.Return)) {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
+        }
     }
 
     public void UpdateState()
@@ -287,6 +300,10 @@ public class PlayerController : MonoBehaviour {
 
         if (currentHearts <= 0)
             GameOver();
+        else {
+            //isHolding = false;
+            this.transform.position = spawnPoint.transform.position;
+        }
     }
 
     /// <summary>
@@ -306,13 +323,15 @@ public class PlayerController : MonoBehaviour {
     /// When the player is game over, he spawns at the checkpoint.
     /// </summary>
     void GameOver() {
-        isHolding = false;
-        this.transform.position = spawnPoint.transform.position;
-        currentHearts = maxHearts;
-        currentStamina = maxStamina;
+        mainCamera.transform.GetChild(3).gameObject.SetActive(true); //turns lose screen on
+        mainCamera.SendMessage("Pause");
+        StartCoroutine(Wait(4));
+    }
 
-        HealthController.RestartHearts();
-        StaminaBarController.ChangeStamina(currentStamina);
+    IEnumerator Wait(float x) {
+        yield return new WaitForSeconds(x);
+        gameOver = true;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     //On trigger enter test
@@ -320,9 +339,11 @@ public class PlayerController : MonoBehaviour {
     {
     
 
-        if(col.tag == "WinZone")
+        if(col.gameObject.tag == "WinZone")
         {
-            hasWon = true;
+            Time.timeScale = .25f;
+            fade.CrossFadeAlpha(1, 4.0f, true);
+            gameOver = true;
             Pause();
         }
 
@@ -336,9 +357,6 @@ public class PlayerController : MonoBehaviour {
 
     private void MailDelivered() {
         isHolding = false;
-        if(--mailToDeliver <= 0) {
-            //winState();
-        }
     }
 
 }

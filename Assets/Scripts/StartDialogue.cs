@@ -23,20 +23,28 @@ public class StartDialogue : MonoBehaviour
             dialogueManager = go.GetComponent<DialogueManager>();
         }
 
+        // Ugh Sick of letters
         PlayerTalk();
         
+        // Hello there
         SwanobiTalk();
 
+        // Sup
         PlayerTalk();
 
+        // Ur mom dead lul!
         SwanobiTalk();
 
+        // My mom dead unlul?
         PlayerTalk();
 
+        // Shush and climb a tree
         SwanobiTalk();
 
+        // I can't
         PlayerTalk();
 
+        // Do
         SwanobiTalk();
 
         sentMessages = true;
@@ -62,7 +70,6 @@ public class StartDialogue : MonoBehaviour
     private void PlayerTalk()
     {
         playerDialogue[playerDialogueIndex++].SendMessage("TriggerDialogue");
-
     }
 
     private void SwanobiTalk()
