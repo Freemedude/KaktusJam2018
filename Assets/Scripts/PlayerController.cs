@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour {
 
     public StartDialogue startDialogue;
     public Image fade;
+    public Image star;
 
     /*** Dialogue management ***/
     public DialogueManager dialogueManager;
@@ -69,6 +70,7 @@ public class PlayerController : MonoBehaviour {
         HealthController.DrawHearts(currentHearts);
         currentStamina = maxStamina;
         fade.CrossFadeAlpha(0, .0f, true);
+        star.CrossFadeAlpha(0, .0f, true);
 
         Pause_All();
         
@@ -325,12 +327,21 @@ public class PlayerController : MonoBehaviour {
     void GameOver() {
         mainCamera.transform.GetChild(3).gameObject.SetActive(true); //turns lose screen on
         mainCamera.SendMessage("Pause");
-        StartCoroutine(Wait(4));
+        StartCoroutine(Wait(3));
     }
 
     IEnumerator Wait(float x) {
         yield return new WaitForSeconds(x);
         gameOver = true;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    IEnumerator WaitForEnd(float x) {
+        fade.CrossFadeAlpha(1, 4.0f, true);
+        star.CrossFadeAlpha(1, 4.0f, true);
+        gameOver = true;
+        Pause();
+        yield return new WaitForSeconds(x);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
@@ -342,9 +353,7 @@ public class PlayerController : MonoBehaviour {
         if(col.gameObject.tag == "WinZone")
         {
             Time.timeScale = .25f;
-            fade.CrossFadeAlpha(1, 4.0f, true);
-            gameOver = true;
-            Pause();
+            StartCoroutine(WaitForEnd(2));
         }
 
         if (col.gameObject.tag == "Mail")
