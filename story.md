@@ -41,7 +41,7 @@ Dear Father,
   
 I know I haven't written in a long time. We both miss you and hope you're doing well.
 
-There's something you need to know. Mom is getting ill. Very ill. And I'm not sure if she going to be alright on her own.
+There's something you need to know. Mom is getting ill. Very ill. And I'm not sure if she going to be all right on her own.
 
 Is it possible for you to get on a shuttle home soon?
 
