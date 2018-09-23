@@ -337,7 +337,7 @@ public class PlayerController : MonoBehaviour {
         gameOver = true;
         Pause();
         yield return new WaitForSeconds(x);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene("StartScreen");
     }
 
     //On trigger enter test
