@@ -13,7 +13,8 @@ public class PlayerController : MonoBehaviour {
     public float flapStrength;
     private Rigidbody2D rb;
     private bool paused = false;
-    
+
+    public GameObject gameOverScreen;
     public GameObject spawnPoint;
     private HealthController HealthController;
     private StaminaBarController StaminaBarController;
@@ -35,9 +36,7 @@ public class PlayerController : MonoBehaviour {
     public Image fade;
     public Image star;
 
-
     /*** Dialogue management ***/
-    private DialogueTrigger dialogueTrigger;
     public DialogueManager dialogueManager;
 
     /*** State management ***/
@@ -48,7 +47,6 @@ public class PlayerController : MonoBehaviour {
         Left, Right
     }
     public Facing facing;
-
     public bool hasWon;
     public Collider2D deathCollider;
 
@@ -59,7 +57,6 @@ public class PlayerController : MonoBehaviour {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        dialogueTrigger = GetComponent<DialogueTrigger>();
 
         sounds = GetComponents<AudioSource>();
         facing = Facing.Left;
@@ -78,13 +75,13 @@ public class PlayerController : MonoBehaviour {
 
         Pause_All();
         
-        dialogueTrigger.SendMessage("TriggerDialogue");
+        startDialogue.StartStory();
     }
 
     // Update is called once per frame
     void Update() {
         if (paused) {
-            if(!dialogueManager.dialogueIsOpen)
+            if(!dialogueManager.dialogueActive && startDialogue.hasFinished)
             {
                 Unpause_All();
             }
@@ -138,12 +135,6 @@ public class PlayerController : MonoBehaviour {
 
         UpdateState();
         UpdateStamina(flapped);
-
-        if (gameOver) {
-            if (Input.GetKeyDown(KeyCode.Return)) {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-            }
-        }
     }
 
     public void UpdateState()
@@ -329,15 +320,15 @@ public class PlayerController : MonoBehaviour {
     /// When the player is game over, he spawns at the checkpoint.
     /// </summary>
     void GameOver() {
-        mainCamera.transform.GetChild(3).gameObject.SetActive(true); //turns lose screen on
+    gameOverScreen.SetActive(true);
         mainCamera.SendMessage("Pause");
         StartCoroutine(Wait(3));
     }
 
     IEnumerator Wait(float x) {
-        yield return new WaitForSeconds(x);
         gameOver = true;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        yield return new WaitForSeconds(x);
+        SceneManager.LoadScene("FinalGame");
     }
 
     IEnumerator WaitForEnd(float x) {

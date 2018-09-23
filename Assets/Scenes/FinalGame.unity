@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1683,7 +1683,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4746229742710842, guid: 12562b48ed3227a4cbc9e6eb3919379b, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 125.86
+      value: 126.88
       objectReference: {fileID: 0}
     - target: {fileID: 4746229742710842, guid: 12562b48ed3227a4cbc9e6eb3919379b, type: 2}
       propertyPath: m_LocalPosition.z
@@ -2621,6 +2621,52 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &408317266
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 408317267}
+  - component: {fileID: 408317268}
+  m_Layer: 0
+  m_Name: SwanobiDialogue3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &408317267
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 408317266}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1325386900}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &408317268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 408317266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3b1fb9c559654faab25bb25f6546815, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    name: Swanobi
+    sentences:
+    - This is no time for grief!
+    - You must deliver this letter to the top of the Old Tree before the EMUPIRE arrives
+      in three minutes!
 --- !u!1 &415805360
 GameObject:
   m_ObjectHideFlags: 0
@@ -3037,6 +3083,81 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 316856455}
   m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+--- !u!1 &492688862
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 492688864}
+  - component: {fileID: 492688863}
+  m_Layer: 0
+  m_Name: Below Ground
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!212 &492688863
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 492688862}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: f435d5867c68548329999eb0d069ff48, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 12.8, y: 8}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!4 &492688864
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 492688862}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.744, y: -11.063, z: 0}
+  m_LocalScale: {x: 1.816878, y: 1.42, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &512726952
 GameObject:
   m_ObjectHideFlags: 0
@@ -3467,7 +3588,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4639662139788316, guid: 472f0b214f1e540bebab5de05fe4081f, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 137.4
+      value: 138.33
       objectReference: {fileID: 0}
     - target: {fileID: 4639662139788316, guid: 472f0b214f1e540bebab5de05fe4081f, type: 2}
       propertyPath: m_LocalPosition.z
@@ -3698,6 +3819,50 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &628151217
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 628151218}
+  - component: {fileID: 628151219}
+  m_Layer: 0
+  m_Name: PlayerDialog4
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &628151218
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 628151217}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1741283083}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &628151219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 628151217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3b1fb9c559654faab25bb25f6546815, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    name: Millenial Falco
+    sentences:
+    - You want me to try to climb the Old Tree in three minutes?
 --- !u!1 &634712652
 GameObject:
   m_ObjectHideFlags: 0
@@ -3848,6 +4013,75 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &688675314
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 688675317}
+  - component: {fileID: 688675316}
+  - component: {fileID: 688675315}
+  m_Layer: 5
+  m_Name: Swanobi
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &688675315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 688675314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: f2ab3ca9e6a991e4496ab7f5acbc03e2, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &688675316
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 688675314}
+  m_CullTransparentMesh: 0
+--- !u!224 &688675317
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 688675314}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1844969616}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 20, y: 20}
+  m_SizeDelta: {x: 150, y: 150}
+  m_Pivot: {x: 0, y: 0}
 --- !u!1 &690977361
 GameObject:
   m_ObjectHideFlags: 0
@@ -4927,82 +5161,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 224485052714735990, guid: 8b7b9749d5e78a543a0b37ba125960f4,
     type: 2}
   m_PrefabInternal: {fileID: 188838017}
---- !u!1 &809597935
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 809597936}
-  - component: {fileID: 809597939}
-  - component: {fileID: 809597938}
-  - component: {fileID: 809597937}
-  m_Layer: 0
-  m_Name: Grandfather Swanobi
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &809597936
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 809597935}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.19999999, y: -1.7, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 15
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &809597937
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 809597935}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3b1fb9c559654faab25bb25f6546815, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogue:
-    name: Swanobi
-    sentences:
-    - Young Falco! Your mother is dead, but this is no time for grief! You must deliver
-      this letter to the top of the Old Tree!
---- !u!114 &809597938
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 809597935}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3b1fb9c559654faab25bb25f6546815, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogue:
-    name: Stranger
-    sentences:
-    - Hello there!
---- !u!114 &809597939
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 809597935}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ebb39973d07234b4ba53d890eba42371, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  point1: {fileID: 0}
-  point2: {fileID: 0}
-  movementSpeed: 0
 --- !u!1 &823006296
 GameObject:
   m_ObjectHideFlags: 0
@@ -5329,8 +5487,8 @@ Prefab:
     - target: {fileID: 114513482177398636, guid: df52dbc1595dc964dba97daefa766b68,
         type: 2}
       propertyPath: dialogue.sentences.Array.data[1]
-      value: 'I know you must have a reason for not responding to my last letter,
-        But mom is getting worse. '
+      value: I know you must have a reason for not responding to my last letter. Mom
+        is getting worse.
       objectReference: {fileID: 0}
     - target: {fileID: 114513482177398636, guid: df52dbc1595dc964dba97daefa766b68,
         type: 2}
@@ -5345,10 +5503,8 @@ Prefab:
     - target: {fileID: 114513482177398636, guid: df52dbc1595dc964dba97daefa766b68,
         type: 2}
       propertyPath: dialogue.sentences.Array.data[4]
-      value: 'Of course I know that you must be very busy with waring the stars, but
-        please come home!
-
-'
+      value: "\rMom always said you were nothing but a scruffy nerf herder, please
+        don't prove her right"
       objectReference: {fileID: 0}
     - target: {fileID: 114513482177398636, guid: df52dbc1595dc964dba97daefa766b68,
         type: 2}
@@ -5368,7 +5524,7 @@ Prefab:
     - target: {fileID: 114513482177398636, guid: df52dbc1595dc964dba97daefa766b68,
         type: 2}
       propertyPath: dialogue.sentences.Array.data[5]
-      value: "Please.\nFalco\r"
+      value: "Falco\r"
       objectReference: {fileID: 0}
     - target: {fileID: 114513482177398636, guid: df52dbc1595dc964dba97daefa766b68,
         type: 2}
@@ -5836,7 +5992,7 @@ Prefab:
     - target: {fileID: 114513482177398636, guid: df52dbc1595dc964dba97daefa766b68,
         type: 2}
       propertyPath: dialogue.sentences.Array.data[4]
-      value: "Miss you,\r\nFalco"
+      value: Miss you, Falco
       objectReference: {fileID: 0}
     - target: {fileID: 114513482177398636, guid: df52dbc1595dc964dba97daefa766b68,
         type: 2}
@@ -6017,6 +6173,50 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &938657147
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 938657148}
+  - component: {fileID: 938657149}
+  m_Layer: 0
+  m_Name: SwanobiDialogue4
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &938657148
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 938657147}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1325386900}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &938657149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 938657147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3b1fb9c559654faab25bb25f6546815, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    name: Swanobi
+    sentences:
+    - Do or do not, attempting is not a valid option!
 --- !u!1 &939500557
 GameObject:
   m_ObjectHideFlags: 0
@@ -6180,7 +6380,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4639662139788316, guid: 472f0b214f1e540bebab5de05fe4081f, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 125.152
+      value: 124.75
       objectReference: {fileID: 0}
     - target: {fileID: 4639662139788316, guid: 472f0b214f1e540bebab5de05fe4081f, type: 2}
       propertyPath: m_LocalPosition.z
@@ -7082,6 +7282,51 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.22, y: 0.7}
   m_EdgeRadius: 0
+--- !u!1 &1109628065
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1109628066}
+  - component: {fileID: 1109628067}
+  m_Layer: 0
+  m_Name: PlayerDialog1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1109628066
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1109628065}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1741283083}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1109628067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1109628065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3b1fb9c559654faab25bb25f6546815, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    name: Millenial Falco
+    sentences:
+    - Ugh!!!
+    - I'm so sick of carrying around all these damn letters!
 --- !u!1 &1133754065
 GameObject:
   m_ObjectHideFlags: 0
@@ -7291,74 +7536,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.6, y: 0.7}
   m_EdgeRadius: 0
---- !u!1 &1152938561 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1660447777466166, guid: 22377f5407acd074c8cc804ef7512732,
-    type: 2}
-  m_PrefabInternal: {fileID: 1715777156}
---- !u!61 &1152938562
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1152938561}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.33, y: 0.32}
-    newSize: {x: 2.56, y: 2.56}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.33, y: 0.32}
-  m_EdgeRadius: 0
---- !u!50 &1152938563
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1152938561}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 1
-  m_Constraints: 4
---- !u!114 &1152938564
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1152938561}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3b1fb9c559654faab25bb25f6546815, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogue:
-    name: Millenial Falco
-    sentences:
-    - Urg!!!
-    - 'I''m so sick of carrying around all these damn letters!
-
-'
 --- !u!1 &1153336655
 GameObject:
   m_ObjectHideFlags: 0
@@ -7708,6 +7885,60 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9062faac0a353ab4f85eea251501c58e, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &1314898728
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1314898729}
+  - component: {fileID: 1314898730}
+  m_Layer: 0
+  m_Name: StartDialogue
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1314898729
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1314898728}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.19999999, y: -1.7, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1741283083}
+  - {fileID: 1325386900}
+  m_Father: {fileID: 0}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1314898730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1314898728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d41df25210d45e41a4a452482b86c9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerDialogue:
+  - {fileID: 1109628067}
+  - {fileID: 1784655408}
+  - {fileID: 1921537337}
+  - {fileID: 628151219}
+  swanobiDialogue:
+  - {fileID: 1871119623}
+  - {fileID: 1598284654}
+  - {fileID: 408317268}
+  - {fileID: 938657149}
+  hasFinished: 0
+  swanobi: {fileID: 688675314}
 --- !u!1 &1322534821
 GameObject:
   m_ObjectHideFlags: 0
@@ -7858,6 +8089,38 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1325386899
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1325386900}
+  m_Layer: 0
+  m_Name: SwanobiDialogue
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1325386900
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1325386899}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1871119622}
+  - {fileID: 1598284653}
+  - {fileID: 408317267}
+  - {fileID: 938657148}
+  m_Father: {fileID: 1314898729}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1345666654
 GameObject:
   m_ObjectHideFlags: 0
@@ -8014,6 +8277,111 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &1403384487
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1844969616}
+    m_Modifications:
+    - target: {fileID: 224158325715201092, guid: 618faf6d855e6904087d80355bbf1943,
+        type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224158325715201092, guid: 618faf6d855e6904087d80355bbf1943,
+        type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224158325715201092, guid: 618faf6d855e6904087d80355bbf1943,
+        type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224158325715201092, guid: 618faf6d855e6904087d80355bbf1943,
+        type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224158325715201092, guid: 618faf6d855e6904087d80355bbf1943,
+        type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224158325715201092, guid: 618faf6d855e6904087d80355bbf1943,
+        type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224158325715201092, guid: 618faf6d855e6904087d80355bbf1943,
+        type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224158325715201092, guid: 618faf6d855e6904087d80355bbf1943,
+        type: 2}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 224158325715201092, guid: 618faf6d855e6904087d80355bbf1943,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224158325715201092, guid: 618faf6d855e6904087d80355bbf1943,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224158325715201092, guid: 618faf6d855e6904087d80355bbf1943,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224158325715201092, guid: 618faf6d855e6904087d80355bbf1943,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224158325715201092, guid: 618faf6d855e6904087d80355bbf1943,
+        type: 2}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224158325715201092, guid: 618faf6d855e6904087d80355bbf1943,
+        type: 2}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224158325715201092, guid: 618faf6d855e6904087d80355bbf1943,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224158325715201092, guid: 618faf6d855e6904087d80355bbf1943,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224158325715201092, guid: 618faf6d855e6904087d80355bbf1943,
+        type: 2}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224158325715201092, guid: 618faf6d855e6904087d80355bbf1943,
+        type: 2}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 618faf6d855e6904087d80355bbf1943, type: 2}
+  m_IsPrefabAsset: 0
+--- !u!224 &1403384488 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 224158325715201092, guid: 618faf6d855e6904087d80355bbf1943,
+    type: 2}
+  m_PrefabInternal: {fileID: 1403384487}
 --- !u!1 &1415360839
 GameObject:
   m_ObjectHideFlags: 0
@@ -8696,7 +9064,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4489413304755894, guid: d788ed96d0afeae4b9c72d87530c2f37, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -4.06
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4489413304755894, guid: d788ed96d0afeae4b9c72d87530c2f37, type: 2}
       propertyPath: m_LocalPosition.y
@@ -8849,7 +9217,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4639662139788316, guid: 472f0b214f1e540bebab5de05fe4081f, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 125.855
+      value: 126.9
       objectReference: {fileID: 0}
     - target: {fileID: 4639662139788316, guid: 472f0b214f1e540bebab5de05fe4081f, type: 2}
       propertyPath: m_LocalPosition.z
@@ -9125,6 +9493,51 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1598284652
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1598284653}
+  - component: {fileID: 1598284654}
+  m_Layer: 0
+  m_Name: SwanobiDialogue2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1598284653
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1598284652}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1325386900}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1598284654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1598284652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3b1fb9c559654faab25bb25f6546815, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    name: Swanobi
+    sentences:
+    - Young Falco!
+    - Young Falco! Stella has died.
 --- !u!1 &1613472074
 GameObject:
   m_ObjectHideFlags: 0
@@ -9794,19 +10207,19 @@ Prefab:
     - target: {fileID: 114513482177398636, guid: df52dbc1595dc964dba97daefa766b68,
         type: 2}
       propertyPath: dialogue.sentences.Array.data[2]
-      value: "The disease has taken her arms and legs and both her lungs.\r\nLife
-        support wont keep her here forever."
+      value: The disease has taken her wings, her legs, and her left lung. Life support
+        wont keep her here forever.
       objectReference: {fileID: 0}
     - target: {fileID: 114513482177398636, guid: df52dbc1595dc964dba97daefa766b68,
         type: 2}
       propertyPath: dialogue.sentences.Array.data[3]
-      value: "\rMother told me to find you, but she needs me here now while she's
-        so weak, so I don't dare leaving her for long."
+      value: Mother told me to find you, but she needs me here now while she's so
+        weak, so I don't dare leave her for long.
       objectReference: {fileID: 0}
     - target: {fileID: 114513482177398636, guid: df52dbc1595dc964dba97daefa766b68,
         type: 2}
       propertyPath: dialogue.sentences.Array.data[4]
-      value: "\rGet back here you nerf herder."
+      value: Don't make me do this alone dad, you're our only hope.
       objectReference: {fileID: 0}
     - target: {fileID: 114513482177398636, guid: df52dbc1595dc964dba97daefa766b68,
         type: 2}
@@ -9882,44 +10295,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114039978591791886, guid: 22377f5407acd074c8cc804ef7512732,
         type: 2}
-      propertyPath: flapCooldownCounter
-      value: 0.035
-      objectReference: {fileID: 0}
-    - target: {fileID: 114039978591791886, guid: 22377f5407acd074c8cc804ef7512732,
-        type: 2}
-      propertyPath: flapStrength
-      value: 95
-      objectReference: {fileID: 0}
-    - target: {fileID: 114039978591791886, guid: 22377f5407acd074c8cc804ef7512732,
-        type: 2}
-      propertyPath: staminaIncreaseValue
-      value: 2.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114039978591791886, guid: 22377f5407acd074c8cc804ef7512732,
-        type: 2}
       propertyPath: spawnPoint
       value: 
       objectReference: {fileID: 1443092366}
     - target: {fileID: 114039978591791886, guid: 22377f5407acd074c8cc804ef7512732,
         type: 2}
-      propertyPath: staminaDecreaseValue
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114039978591791886, guid: 22377f5407acd074c8cc804ef7512732,
-        type: 2}
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 1733603207}
-    - target: {fileID: 65661167392137568, guid: 22377f5407acd074c8cc804ef7512732,
-        type: 2}
-      propertyPath: m_Size.z
-      value: 0.2
-      objectReference: {fileID: 0}
     - target: {fileID: 114039978591791886, guid: 22377f5407acd074c8cc804ef7512732,
         type: 2}
-      propertyPath: dialogueManager
+      propertyPath: startDialogue
       value: 
-      objectReference: {fileID: 1616653281}
+      objectReference: {fileID: 1314898730}
     - target: {fileID: 114039978591791886, guid: 22377f5407acd074c8cc804ef7512732,
         type: 2}
       propertyPath: fade
@@ -9930,9 +10318,12 @@ Prefab:
       propertyPath: star
       value: 
       objectReference: {fileID: 736926578}
-    m_RemovedComponents:
-    - {fileID: 54970911434862328, guid: 22377f5407acd074c8cc804ef7512732, type: 2}
-    - {fileID: 65661167392137568, guid: 22377f5407acd074c8cc804ef7512732, type: 2}
+    - target: {fileID: 114039978591791886, guid: 22377f5407acd074c8cc804ef7512732,
+        type: 2}
+      propertyPath: dialogueManager
+      value: 
+      objectReference: {fileID: 1616653281}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22377f5407acd074c8cc804ef7512732, type: 2}
   m_IsPrefabAsset: 0
 --- !u!4 &1721763571 stripped
@@ -10100,6 +10491,38 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1741283082
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1741283083}
+  m_Layer: 0
+  m_Name: PlayerDialogue
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1741283083
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1741283082}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1109628066}
+  - {fileID: 1784655407}
+  - {fileID: 1921537336}
+  - {fileID: 628151218}
+  m_Father: {fileID: 1314898729}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1764897581
 GameObject:
   m_ObjectHideFlags: 0
@@ -10298,6 +10721,50 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1784655406
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1784655407}
+  - component: {fileID: 1784655408}
+  m_Layer: 0
+  m_Name: PlayerDialog2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1784655407
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1784655406}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1741283083}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1784655408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1784655406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3b1fb9c559654faab25bb25f6546815, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    name: Millenial Falco
+    sentences:
+    - Grandfather Swanobi!
 --- !u!4 &1785780116 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4183815266565548, guid: f5ef548dabfa140f1b990aa6c068a4ef,
@@ -10763,6 +11230,8 @@ RectTransform:
   - {fileID: 808818862}
   - {fileID: 2000421173}
   - {fileID: 736926577}
+  - {fileID: 688675317}
+  - {fileID: 1403384488}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10978,6 +11447,50 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1871119621
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1871119622}
+  - component: {fileID: 1871119623}
+  m_Layer: 0
+  m_Name: SwanobiDialogue1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1871119622
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1871119621}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1325386900}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1871119623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1871119621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3b1fb9c559654faab25bb25f6546815, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    name: Stranger
+    sentences:
+    - Hello there!
 --- !u!1001 &1894362596
 Prefab:
   m_ObjectHideFlags: 0
@@ -11035,6 +11548,50 @@ Prefab:
     - {fileID: 65126725658386570, guid: 18f2e04b7aca3ca4f811ec4f4e0f156f, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: 18f2e04b7aca3ca4f811ec4f4e0f156f, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &1921537335
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1921537336}
+  - component: {fileID: 1921537337}
+  m_Layer: 0
+  m_Name: PlayerDialog3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1921537336
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1921537335}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1741283083}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1921537337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1921537335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3b1fb9c559654faab25bb25f6546815, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    name: Millenial Falco
+    sentences:
+    - MOM IS DEAD?!
 --- !u!1 &1934726267
 GameObject:
   m_ObjectHideFlags: 0
@@ -11199,10 +11756,10 @@ RectTransform:
   m_Father: {fileID: 1844969616}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 756, y: 400}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2000421174
 MonoBehaviour:
@@ -11251,7 +11808,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4639662139788316, guid: 472f0b214f1e540bebab5de05fe4081f, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 125.66
+      value: 125.29
       objectReference: {fileID: 0}
     - target: {fileID: 4639662139788316, guid: 472f0b214f1e540bebab5de05fe4081f, type: 2}
       propertyPath: m_LocalPosition.z
@@ -11559,6 +12116,10 @@ Prefab:
       propertyPath: m_TagString
       value: WinZone
       objectReference: {fileID: 0}
+    - target: {fileID: 4832680445179314, guid: ae95550db3c06e244aff5d2cfbeaf59c, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 65311287421134550, guid: ae95550db3c06e244aff5d2cfbeaf59c, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: ae95550db3c06e244aff5d2cfbeaf59c, type: 2}
@@ -11686,7 +12247,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4749885290548226, guid: 18f2e04b7aca3ca4f811ec4f4e0f156f, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 5.2124996
+      value: 5.05
       objectReference: {fileID: 0}
     - target: {fileID: 4749885290548226, guid: 18f2e04b7aca3ca4f811ec4f4e0f156f, type: 2}
       propertyPath: m_LocalPosition.z
