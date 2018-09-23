@@ -3345,6 +3345,47 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &608565900
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 608565902}
+  - component: {fileID: 608565901}
+  m_Layer: 0
+  m_Name: WinCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &608565901
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 608565900}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &608565902
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 608565900}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.47, y: 44.51, z: 0}
+  m_LocalScale: {x: 1.67, y: 0.4, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &634712652
 GameObject:
   m_ObjectHideFlags: 0
@@ -4366,6 +4407,79 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 224485052714735990, guid: 8b7b9749d5e78a543a0b37ba125960f4,
     type: 2}
   m_PrefabInternal: {fileID: 188838017}
+--- !u!1 &809597935
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 809597936}
+  - component: {fileID: 809597939}
+  - component: {fileID: 809597938}
+  - component: {fileID: 809597937}
+  m_Layer: 0
+  m_Name: Grandfather Swanobi
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &809597936
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 809597935}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.19999999, y: -1.7, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &809597937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 809597935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3b1fb9c559654faab25bb25f6546815, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    name: Swanobi
+    sentences:
+    - Young Falco! Your mother is dead, but this is no time for grief! You must deliver
+      this letter to the top of the Old Tree!
+--- !u!114 &809597938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 809597935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3b1fb9c559654faab25bb25f6546815, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    name: Stranger
+    sentences:
+    - Hello there!
+--- !u!114 &809597939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 809597935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebb39973d07234b4ba53d890eba42371, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &823006296
 GameObject:
   m_ObjectHideFlags: 0
@@ -4617,7 +4731,7 @@ Prefab:
     - target: {fileID: 114513482177398636, guid: df52dbc1595dc964dba97daefa766b68,
         type: 2}
       propertyPath: dialogue.sentences.Array.size
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4840512471217438, guid: df52dbc1595dc964dba97daefa766b68, type: 2}
       propertyPath: m_LocalPosition.x
@@ -4692,27 +4806,31 @@ Prefab:
     - target: {fileID: 114513482177398636, guid: df52dbc1595dc964dba97daefa766b68,
         type: 2}
       propertyPath: dialogue.sentences.Array.data[1]
-      value: 2
+      value: 'I know you must have a reason for not responding to my last letter,
+        But mom is getting worse. '
       objectReference: {fileID: 0}
     - target: {fileID: 114513482177398636, guid: df52dbc1595dc964dba97daefa766b68,
         type: 2}
       propertyPath: dialogue.sentences.Array.data[2]
-      value: 3
+      value: 'The doctor says that it''s Tuskus Radia, a "viral auto-immune disease". '
       objectReference: {fileID: 0}
     - target: {fileID: 114513482177398636, guid: df52dbc1595dc964dba97daefa766b68,
         type: 2}
       propertyPath: dialogue.sentences.Array.data[3]
-      value: 4
+      value: I don't know what that means, but I know that it does not seem good.
       objectReference: {fileID: 0}
     - target: {fileID: 114513482177398636, guid: df52dbc1595dc964dba97daefa766b68,
         type: 2}
       propertyPath: dialogue.sentences.Array.data[4]
-      value: 5
+      value: 'Of course I know that you must be very busy with waring the stars, but
+        please come home!
+
+'
       objectReference: {fileID: 0}
     - target: {fileID: 114513482177398636, guid: df52dbc1595dc964dba97daefa766b68,
         type: 2}
       propertyPath: dialogue.sentences.Array.data[0]
-      value: Text1
+      value: "\rDear Father,"
       objectReference: {fileID: 0}
     - target: {fileID: 114426712968780496, guid: df52dbc1595dc964dba97daefa766b68,
         type: 2}
@@ -4723,6 +4841,20 @@ Prefab:
     - target: {fileID: 1662797245849136, guid: df52dbc1595dc964dba97daefa766b68, type: 2}
       propertyPath: m_Name
       value: MailBox (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114513482177398636, guid: df52dbc1595dc964dba97daefa766b68,
+        type: 2}
+      propertyPath: dialogue.sentences.Array.data[5]
+      value: "Please.\nFalco\r"
+      objectReference: {fileID: 0}
+    - target: {fileID: 114513482177398636, guid: df52dbc1595dc964dba97daefa766b68,
+        type: 2}
+      propertyPath: dialogue.name
+      value: Letter
+      objectReference: {fileID: 0}
+    - target: {fileID: 1662797245849136, guid: df52dbc1595dc964dba97daefa766b68, type: 2}
+      propertyPath: m_TagString
+      value: MailBoxes
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 65758051510931068, guid: df52dbc1595dc964dba97daefa766b68, type: 2}
@@ -5164,27 +5296,29 @@ Prefab:
     - target: {fileID: 114513482177398636, guid: df52dbc1595dc964dba97daefa766b68,
         type: 2}
       propertyPath: dialogue.sentences.Array.data[1]
-      value: 2
+      value: I know I haven't written in a long time. But we both miss you and hope
+        you're doing well.
       objectReference: {fileID: 0}
     - target: {fileID: 114513482177398636, guid: df52dbc1595dc964dba97daefa766b68,
         type: 2}
       propertyPath: dialogue.sentences.Array.data[2]
-      value: 3
+      value: "\rThere's something you need to know. Mom is getting ill. Like very
+        ill. And I'm not sure if she going to be alright on her own."
       objectReference: {fileID: 0}
     - target: {fileID: 114513482177398636, guid: df52dbc1595dc964dba97daefa766b68,
         type: 2}
       propertyPath: dialogue.sentences.Array.data[3]
-      value: 4
+      value: "\rIs it possible for you to get on a shuttle home soon?"
       objectReference: {fileID: 0}
     - target: {fileID: 114513482177398636, guid: df52dbc1595dc964dba97daefa766b68,
         type: 2}
       propertyPath: dialogue.sentences.Array.data[4]
-      value: 5
+      value: "Miss you,\r\nFalco"
       objectReference: {fileID: 0}
     - target: {fileID: 114513482177398636, guid: df52dbc1595dc964dba97daefa766b68,
         type: 2}
       propertyPath: dialogue.sentences.Array.data[0]
-      value: Text1
+      value: "\rDear Father,"
       objectReference: {fileID: 0}
     - target: {fileID: 114426712968780496, guid: df52dbc1595dc964dba97daefa766b68,
         type: 2}
@@ -5196,6 +5330,15 @@ Prefab:
         type: 2}
       propertyPath: inDialogue
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114513482177398636, guid: df52dbc1595dc964dba97daefa766b68,
+        type: 2}
+      propertyPath: dialogue.name
+      value: ' Letter: '
+      objectReference: {fileID: 0}
+    - target: {fileID: 1662797245849136, guid: df52dbc1595dc964dba97daefa766b68, type: 2}
+      propertyPath: m_TagString
+      value: MailBoxes
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 65758051510931068, guid: df52dbc1595dc964dba97daefa766b68, type: 2}
@@ -6645,6 +6788,24 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!114 &1152938564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1152938561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3b1fb9c559654faab25bb25f6546815, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    name: Millenial Falco
+    sentences:
+    - Urg!!!
+    - 'I''m so sick of carrying around all these damn letters!
+
+'
 --- !u!1 &1153336655
 GameObject:
   m_ObjectHideFlags: 0
@@ -8861,7 +9022,7 @@ Prefab:
     - target: {fileID: 114513482177398636, guid: df52dbc1595dc964dba97daefa766b68,
         type: 2}
       propertyPath: dialogue.sentences.Array.size
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4840512471217438, guid: df52dbc1595dc964dba97daefa766b68, type: 2}
       propertyPath: m_LocalPosition.x
@@ -8936,27 +9097,29 @@ Prefab:
     - target: {fileID: 114513482177398636, guid: df52dbc1595dc964dba97daefa766b68,
         type: 2}
       propertyPath: dialogue.sentences.Array.data[1]
-      value: 2
+      value: "\rMother is dying."
       objectReference: {fileID: 0}
     - target: {fileID: 114513482177398636, guid: df52dbc1595dc964dba97daefa766b68,
         type: 2}
       propertyPath: dialogue.sentences.Array.data[2]
-      value: 3
+      value: "The disease has taken her arms and legs and both her lungs.\r\nLife
+        support wont keep her here forever."
       objectReference: {fileID: 0}
     - target: {fileID: 114513482177398636, guid: df52dbc1595dc964dba97daefa766b68,
         type: 2}
       propertyPath: dialogue.sentences.Array.data[3]
-      value: 4
+      value: "\rMother told me to find you, but she needs me here now while she's
+        so weak, so I don't dare leaving her for long."
       objectReference: {fileID: 0}
     - target: {fileID: 114513482177398636, guid: df52dbc1595dc964dba97daefa766b68,
         type: 2}
       propertyPath: dialogue.sentences.Array.data[4]
-      value: 5
+      value: "\rGet back here you nerf herder."
       objectReference: {fileID: 0}
     - target: {fileID: 114513482177398636, guid: df52dbc1595dc964dba97daefa766b68,
         type: 2}
       propertyPath: dialogue.sentences.Array.data[0]
-      value: Text1
+      value: "\rDear Father,"
       objectReference: {fileID: 0}
     - target: {fileID: 114426712968780496, guid: df52dbc1595dc964dba97daefa766b68,
         type: 2}
@@ -8967,6 +9130,20 @@ Prefab:
     - target: {fileID: 1662797245849136, guid: df52dbc1595dc964dba97daefa766b68, type: 2}
       propertyPath: m_Name
       value: MailBox (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114513482177398636, guid: df52dbc1595dc964dba97daefa766b68,
+        type: 2}
+      propertyPath: dialogue.sentences.Array.data[5]
+      value: "\rFalco"
+      objectReference: {fileID: 0}
+    - target: {fileID: 114513482177398636, guid: df52dbc1595dc964dba97daefa766b68,
+        type: 2}
+      propertyPath: dialogue.name
+      value: Letter
+      objectReference: {fileID: 0}
+    - target: {fileID: 1662797245849136, guid: df52dbc1595dc964dba97daefa766b68, type: 2}
+      propertyPath: m_TagString
+      value: MailBoxes
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 65758051510931068, guid: df52dbc1595dc964dba97daefa766b68, type: 2}
@@ -8985,7 +9162,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4211904656521468, guid: 22377f5407acd074c8cc804ef7512732, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -1.7
+      value: -2.43
       objectReference: {fileID: 0}
     - target: {fileID: 4211904656521468, guid: 22377f5407acd074c8cc804ef7512732, type: 2}
       propertyPath: m_LocalPosition.z
@@ -9046,6 +9223,11 @@ Prefab:
       propertyPath: m_Size.z
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 114039978591791886, guid: 22377f5407acd074c8cc804ef7512732,
+        type: 2}
+      propertyPath: dialogueManager
+      value: 
+      objectReference: {fileID: 1616653281}
     m_RemovedComponents:
     - {fileID: 54970911434862328, guid: 22377f5407acd074c8cc804ef7512732, type: 2}
     - {fileID: 65661167392137568, guid: 22377f5407acd074c8cc804ef7512732, type: 2}
