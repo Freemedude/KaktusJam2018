@@ -30,7 +30,6 @@ public class PlayerController : MonoBehaviour {
     private float currentStamina;
     private AudioSource[] sounds;
     public Camera mainCamera;
-    private bool gameOver = false;
 
     public StartDialogue startDialogue;
     public Image fade;
@@ -47,8 +46,10 @@ public class PlayerController : MonoBehaviour {
         Left, Right
     }
     public Facing facing;
-    public bool hasWon;
-    public Collider2D deathCollider;
+
+    private bool isGrounded = true;
+    public float distance = 2f;
+    public LayerMask layerMask;
 
     // Use this for initialization
     void Start() {
@@ -80,6 +81,9 @@ public class PlayerController : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
+        if (Input.GetKeyDown(KeyCode.Escape))
+            Application.Quit();
+
         if (paused) {
             if(!dialogueManager.dialogueActive && startDialogue.hasFinished)
             {
@@ -101,6 +105,8 @@ public class PlayerController : MonoBehaviour {
             jump = Input.GetKeyDown(KeyCode.Space);
         else
             jump = Input.GetKeyDown("joystick 1 button 0");
+
+        CheckGround();
 
         isMoving = (hori != 0f || isFlying);
 
@@ -267,12 +273,6 @@ public class PlayerController : MonoBehaviour {
 	/// If the player gets hit by an enemy, decrease health.
     /// </summary>
 	private void OnCollisionEnter2D(Collision2D col) {
-
-        if (col.gameObject.tag == "Ground")
-        {
-            isFlying = false;
-        }
-
         if (col.gameObject.tag == "Enemy")
             DecreaseHealth();
     }
@@ -281,10 +281,11 @@ public class PlayerController : MonoBehaviour {
     /// <summary>
     /// If the player leaves ground, say we are flying
     /// </summary>
-	private void OnCollisionExit2D(Collision2D other) {
-        if (other.gameObject.tag == "Ground" || other.gameObject.tag == "MailBox") {
-            isFlying = true;
-        }
+    void CheckGround()
+    {
+        Debug.DrawRay(transform.position, Vector3.down * distance, Color.green);
+        isGrounded = Physics2D.Raycast(transform.position, Vector3.down, distance, layerMask);
+        isFlying = !isGrounded;
     }
 
     /// <summary>
@@ -326,7 +327,6 @@ public class PlayerController : MonoBehaviour {
     }
 
     IEnumerator Wait(float x) {
-        gameOver = true;
         yield return new WaitForSeconds(x);
         SceneManager.LoadScene("FinalGame");
     }
@@ -334,7 +334,6 @@ public class PlayerController : MonoBehaviour {
     IEnumerator WaitForEnd(float x) {
         fade.CrossFadeAlpha(1, 4.0f, true);
         star.CrossFadeAlpha(1, 4.0f, true);
-        gameOver = true;
         Pause();
         yield return new WaitForSeconds(x);
         SceneManager.LoadScene("StartScreen");

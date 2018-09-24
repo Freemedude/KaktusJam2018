@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
-    path: Assets/FinalGame.unity
+    path: Assets/Scenes/Features/StartScreen.unity
+    guid: 47bd9c6742a674f5a857578a62d4e3be
+  - enabled: 1
+    path: Assets/Scenes/FinalGame.unity
     guid: eba7ec30073fe40e7a910dd4e39dcb5e
   m_configObjects: {}
